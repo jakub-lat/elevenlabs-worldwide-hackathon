@@ -64,13 +64,14 @@ async def get_next_message(request: Request):
     try:
         body = await request.json()
         conversation_history = body.get("conversation_history", [])
+        conversation_history.append({"role": "user", "content": body.get("user_message")})
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=conversation_history if conversation_history else []
+            messages=conversation_history,
         )
 
-        assistant_message = response.choices[0].message['content']
+        assistant_message = response.choices[0].message.content
         conversation_history.append({"role": "assistant", "content": assistant_message})
 
         return {"message": assistant_message, "conversation_history": conversation_history}
