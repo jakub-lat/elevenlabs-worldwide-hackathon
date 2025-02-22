@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import shutil
 import os
+from .tools import tools
+from .prompts import SYSTEM_PROMPT
 
 # Load environment variables
 load_dotenv()
@@ -64,11 +66,17 @@ async def get_next_message(request: Request):
     try:
         body = await request.json()
         conversation_history = body.get("conversation_history", [])
+        if not conversation_history:
+          conversation_history.append({"role": "system", "content": SYSTEM_PROMPT})
+          conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
+        
         conversation_history.append({"role": "user", "content": body.get("user_message")})
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=conversation_history,
+            tools=tools,
+            tool_choice="auto",
         )
 
         assistant_message = response.choices[0].message.content
