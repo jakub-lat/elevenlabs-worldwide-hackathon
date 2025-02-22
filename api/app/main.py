@@ -1,26 +1,78 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+from openai import OpenAI
+import shutil
+import os
 
+# Load environment variables
+load_dotenv()
+
+# Initialize FastAPI
 app = FastAPI()
+
+# Enable CORS for frontend communication
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change to specific domains in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Initialize OpenAI client
+client = OpenAI()
+
+# Set up upload directory
+UPLOAD_DIR = "uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
-  
-from fastapi import Request
-from openai import OpenAI
+    return {"message": "API is running!"}
 
-client = OpenAI()
 
-@app.post("/get_next_message")
+@app.post("/transcribe/")
+async def transcribe_audio(file: UploadFile = File(...)):
+    """Handles audio transcription using OpenAI's Whisper model."""
+    try:
+        file_location = os.path.join(UPLOAD_DIR, file.filename)
+
+        # Save uploaded file
+        with open(file_location, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+
+        # Transcribe the audio file
+        with open(file_location, "rb") as audio_file:
+            transcription = client.audio.transcriptions.create(
+                model="whisper-1",
+                file=audio_file
+            )
+
+        # Remove temporary file after processing
+        os.remove(file_location)
+
+        print(f"Transcription: {transcription.text}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Transcription error: {str(e)}")
+
+
+@app.post("/get_next_message/")
 async def get_next_message(request: Request):
-    body = await request.json()
-    conversation_history = body.get("conversation_history", [])
-    
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=conversation_history
-    )
-    
-    conversation_history.append({"role": "assistant", "content": response.choices[0].message['content']})
-    
-    return {"message": response.choices[0].message['content'], "conversation_history": conversation_history}
+    """Handles chatbot response using OpenAI's GPT-4o model."""
+    try:
+        body = await request.json()
+        conversation_history = body.get("conversation_history", [])
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=conversation_history if conversation_history else []
+        )
+
+        assistant_message = response.choices[0].message['content']
+        conversation_history.append({"role": "assistant", "content": assistant_message})
+
+        return {"message": assistant_message, "conversation_history": conversation_history}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Chatbot error: {str(e)}")
