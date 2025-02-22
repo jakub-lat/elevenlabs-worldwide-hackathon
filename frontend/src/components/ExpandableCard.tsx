@@ -2,26 +2,20 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
+import { Product } from "@/lib/models";
+import { useAtom } from "jotai";
+import { currentProductAtom } from "@/lib/state";
 
-// Define the Product interface
-interface Product {
-  id: string;
-  brand: string;
-  name: string;
-  price: number;
-  description?: string;
-  imageURL?: string;
-}
 
 export function ExpandableCards({ products }: { products: Product[] }) {
-  const [active, setActive] = useState<Product | boolean | null>(null);
+  const [active, setActive] = useAtom(currentProductAtom);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setActive(false);
+        setActive(null);
       }
     }
 
@@ -45,13 +39,13 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            className="fixed inset-0 bg-black/30 h-full w-full z-10"
           />
         )}
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 grid place-items-center z-[100]">
+          <div className="fixed inset-0 -mt-[100px] grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.name}-${id}`}
               layout
@@ -116,14 +110,14 @@ export function ExpandableCards({ products }: { products: Product[] }) {
         ) : null}
       </AnimatePresence>
       {/* Product List */}
-      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-4 py-8">
+      <div className="max-w-6xl mx-auto flex flex-wrap gap-4 py-8">
         {products.map((product) => (
           <motion.div
             layoutId={`card-${product.name}-${id}`}
             key={`card-${product.id}-${id}`}
             onClick={() => setActive(product)}
-            className="bg-gray-100 border border-gray-300 dark:bg-neutral-900 rounded-xl cursor-pointer 
-            hover:bg-neutral-50 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px]"
+            className="bg-white border border-gray-400 dark:bg-neutral-900 rounded-xl cursor-pointer transition-colors
+            hover:bg-gray-100 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px]"
           >
             {/* Image */}
             <motion.div layoutId={`image-${product.name}-${id}`}>
