@@ -5,9 +5,11 @@ import SpeechIcon from "@/components/SpeechIcon";
 export default function Start() {
     const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
     const [audioUrl, setAudioUrl] = useState<string | null>(null);
+    const [transcription, setTranscription] = useState<string | null>(null);
 
     useEffect(() => {
         let recorder: MediaRecorder | null = null;
+        let chunks: Blob[] = [];
 
         const handleKeyDown = async (event: KeyboardEvent) => {
             if (event.code === "Space" && !recorder) {
@@ -15,14 +17,13 @@ export default function Start() {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     recorder = new MediaRecorder(stream);
                     setMediaRecorder(recorder);
-
-                    let chunks: Blob[] = [];
+                    chunks = [];
 
                     recorder.ondataavailable = (e: BlobEvent) => chunks.push(e.data);
                     recorder.onstop = () => {
                         const audioBlob = new Blob(chunks, { type: "audio/wav" });
-                        const newAudioUrl = URL.createObjectURL(audioBlob);
-                        setAudioUrl(newAudioUrl); // Update the audio URL after each recording
+                        const audioFile = new File([audioBlob], "recording.wav", { type: "audio/wav" });
+                        uploadAudio(audioFile);
                     };
 
                     recorder.start();
@@ -51,17 +52,31 @@ export default function Start() {
         };
     }, []);
 
+    const uploadAudio = async (file: File) => {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const response = await fetch("http://localhost:8000/transcribe/", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                console.log("Audio uploaded successfully");
+            } else {
+                console.error("Failed to transcribe audio");
+            }
+        } catch (error) {
+            console.error("Error uploading audio:", error);
+        }
+    };
+
     return (
         <div>
             <div className="flex flex-col justify-center items-center min-h-[100vh] w-full">
                 <h1 className="text-center text-2xl font-bold mb-6">What do you want to buy today?</h1>
                 <SpeechIcon />
-                {audioUrl && (
-                    <audio key={audioUrl} controls className="mt-4">
-                        <source src={audioUrl} type="audio/wav" />
-                        Your browser does not support the audio element.
-                    </audio>
-                )}
             </div>
             <div className="absolute left-0 right-0 bottom-0 pb-24 w-full">
                 <div className="mt-10 flex flex-col items-center">
