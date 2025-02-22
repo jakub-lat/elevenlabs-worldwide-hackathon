@@ -1,0 +1,8 @@
+services:
+  api:
+    image: ghcr.io/jakub-lat/elevenlabs-worldwide-hackathon:latest
+    build: .
+    ports:
+      - "8000:8000"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
