@@ -134,7 +134,7 @@ export default function useRecording() {
                 const ids = args.product_ids;
                 let products = await getProducts();
                 products = products.filter((x: any) => ids.includes(x.id));
-                setWishlist([...wishlist, ...products]);
+                setWishlist(prevWishlist => [...prevWishlist, ...products]);
                 setWishlistOpen(true);
             } else if(function_name === 'remove_favourites') {
                 const ids = args.product_ids;
