@@ -6,6 +6,7 @@ import shutil
 import os
 from .tools import tools
 from .prompts import SYSTEM_PROMPT
+from .products import products
 
 # Load environment variables
 load_dotenv()
@@ -67,21 +68,20 @@ async def get_next_message(request: Request):
         body = await request.json()
         conversation_history = body.get("conversation_history", [])
         if not conversation_history:
-          conversation_history.append({"role": "system", "content": SYSTEM_PROMPT})
+          conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products)})
           conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
         
         conversation_history.append({"role": "user", "content": body.get("user_message")})
 
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=conversation_history,
             tools=tools,
-            tool_choice="auto",
+            tool_choice="required",
         )
 
-        assistant_message = response.choices[0].message.content
-        conversation_history.append({"role": "assistant", "content": assistant_message})
+        conversation_history.append(response)
 
-        return {"message": assistant_message, "conversation_history": conversation_history}
+        return {"message": "test", "conversation_history": conversation_history}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Chatbot error: {str(e)}")
