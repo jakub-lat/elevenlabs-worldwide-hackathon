@@ -11,4 +11,4 @@ wheels/
 .env
 
 /app/.env
-__init__
+__init__.py
