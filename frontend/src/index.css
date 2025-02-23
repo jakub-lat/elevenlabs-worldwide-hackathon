@@ -270,3 +270,12 @@
 .boxContainer.loading .box5 {
   animation-delay: 0.4s;
 }
+
+
+.bg-gradient {
+  background-color: white;
+  background-image:
+radial-gradient(at 37% 94%, hsla(311,34%,81%,1) 0px, transparent 50%),
+radial-gradient(at 0% 45%, hsla(276,61%,83%,1) 0px, transparent 50%),
+radial-gradient(at 88% 83%, hsla(240,52%,86%,1) 0px, transparent 50%);
+}
