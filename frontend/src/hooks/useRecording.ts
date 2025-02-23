@@ -53,9 +53,8 @@ export default function useRecording() {
 
             cancel();
 
-            if (function_name === 'do_nothing') {
-                playTts(response);
-            } else if (function_name === 'show_products' || function_name === 'show_more_products') {
+            if (function_name === 'do_nothing') {}
+            else if (function_name === 'show_products' || function_name === 'show_more_products') {
                 if (!args.product_ids) return;
                 let fetchedProducts = await getProducts();
                 setProducts(fetchedProducts.filter((x: any) => args.product_ids.includes(x.id)));
@@ -81,6 +80,8 @@ export default function useRecording() {
                 setCurrentProduct(null);
                 setWishlistOpen(false);
             }
+
+            playTts(response);
         } catch (error) {
             console.error("Error uploading audio:", error);
         } finally {
