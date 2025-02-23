@@ -130,13 +130,12 @@ async def get_next_message(request: Request):
       "content": response.choices[0].message.content,
     })
     
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "system", "content": SYSTEM_PROMPT_SUMARIZE_TOPIC}] + conversation_history[1:],
-    )
 
     return {
-      "topic": response.choices[0].message.content,
+      "topic": client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "system", "content": SYSTEM_PROMPT_SUMARIZE_TOPIC}] + conversation_history[1:],
+      ).choices[0].message.content,
       "function_name": function_name, 
       "arguments": json.loads(results), 
       "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
