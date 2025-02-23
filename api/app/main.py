@@ -128,6 +128,12 @@ async def get_next_message(request: Request):
       "role": "assistant",
       "content": response.choices[0].message.content,
     })
+    
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "system", "content": SYSTEM_PROMPT.format(products=products_formatted)}] + conversation_history[1:],
+    )
+    
 
     return {
       "function_name": function_name, 
