@@ -6,3 +6,5 @@ services:
       - "8000:8000"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    environment:
+      - PORT=8000
