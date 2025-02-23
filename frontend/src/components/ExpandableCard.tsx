@@ -4,6 +4,7 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { Product } from "@/lib/models";
 import { useAtom } from "jotai";
 import { currentProductAtom } from "@/lib/state";
+import { FaStar } from "react-icons/fa";
 
 
 export function ExpandableCards({ products }: { products: Product[] }) {
@@ -64,7 +65,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               {/* Left: Image */}
               <motion.div
                 layoutId={`image-${active.name}-${active.id}`}
-                className="md:w-2/3 my-12"
+                className="md:w-1/3 my-24 mx-8"
               >
                 <img
                   width={400}
@@ -75,7 +76,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 />
               </motion.div>
               {/* Right: Details */}
-              <div className="md:w-1/2 p-6 flex flex-col gap-2">
+              <div className="md:w-1/2 p-6 flex flex-col justify-center gap-2">
                 <motion.h4
                   layoutId={`brand-${active.brand}-${active.id}`}
                   className="text-sm text-gray-500"
@@ -84,21 +85,27 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 </motion.h4>
                 <motion.h3
                   layoutId={`name-${active.name}-${active.id}`}
-                  className="font-bold text-black dark:text-neutral-200 text-xl text-center mt-4"
+                  className="font-bold text-black dark:text-neutral-200 text-xl mt-4"
                 >
                   {active.name}
                 </motion.h3>
                 <motion.p
                   layoutId={`price-${active.price}-${active.id}`}
-                  className="text-gray-700 text-center mt-4"
+                  className="text-gray-700 mt-1"
                 >
                   {active.price}
                 </motion.p>
                 <motion.div
-                  layoutId={`price-${active.price}-${active.id}`}
-                  className="text-gray-700"
+                  layoutId={`reviews-${active.price}-${active.id}`}
+                  className="text-gray-700 mt-4 mb-2"
                 >
-                  <div className="text-gray-500 text-sm">{(Math.floor(Math.random() * 31) * 0.1 + 2).toFixed(1)}/5 - ({Math.floor(Math.random() * (12345 - 24 + 1)) + 24} opinions gathered across the web)</div>
+                  <div className="flex flex-row gap-x-1 items-center">
+                    <FaStar size={14} />
+                    <div className="text-sm text-gray-600">
+                      <span className="text-gray-800">{(Math.floor(Math.random() * 31) * 0.1 + 2).toFixed(1)}/5</span>
+                      &nbsp;&nbsp;&nbsp;({Math.floor(Math.random() * (12345 - 24 + 1)) + 24} opinions gathered across the web)
+                    </div>
+                  </div>
                 </motion.div>
                 <motion.div
                   layout
@@ -115,7 +122,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
         ) : null}
       </AnimatePresence>
       {/* Product List */}
-      <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-28 py-2 group">
+      <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-8 py-2 group">
         {products.map((product) => (
           <motion.div
             layoutId={`card-${product.name}-${product.id}`}
@@ -125,7 +132,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 max-w-[100%] py-4"
           >
             {/* Image */}
-            <motion.div layoutId={`image-${product.name}-${product.id}`}>
+            <motion.div layoutId={`image-${product.name}-${product.id}`} className="mx-8">
               <img
                 width={400}
                 height={400}

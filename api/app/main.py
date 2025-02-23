@@ -40,7 +40,7 @@ def read_root():
 
 
 @app.get("/products/")
-def get_products():
+def get_products(): 
     return products["products"]
 
 
