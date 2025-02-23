@@ -112,6 +112,8 @@ export default function useRecording() {
                 const audio = new Audio(audioUrl);
                 audio.play();
             } else if(function_name === 'show_products' || function_name === 'show_more_products') {
+                if(!args.product_ids) return;
+
                 const productsRes = await fetch(API_URL+"/products");
                 let products = await productsRes.json();
                 products = products.filter((x: any) => args.product_ids.includes(x.id));

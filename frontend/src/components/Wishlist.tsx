@@ -33,7 +33,7 @@ export default function Wishlist() {
                 </SheetHeader>
                 <div className="flex flex-col w-full px-5 gap-5">
                     {wishlist.map(product => <div key={product.id} className="flex items-center gap-x-4">
-                        <img src={product.imageURL} alt={product.name} className="w-16 h-16 object-cover rounded-lg" />
+                        <img src={product.image_link} alt={product.name} className="w-16 h-16 object-cover rounded-lg" />
                         <div className="flex flex-1 flex-col">
                             <span className="text-sm">{product.brand}</span>
                             <span className="text-md font-semibold">{product.name}</span>

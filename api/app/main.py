@@ -40,7 +40,7 @@ def read_root():
 
 @app.get("/products/")
 def get_products():
-    return products
+    return products["products"]
 
 @app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):

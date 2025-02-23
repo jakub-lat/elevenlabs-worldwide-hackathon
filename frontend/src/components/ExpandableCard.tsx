@@ -70,7 +70,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 <img
                   width={400}
                   height={400}
-                  src={active.imageURL}
+                  src={active.image_link}
                   alt={active.name}
                   className="w-full h-full object-cover"
                 />
@@ -93,7 +93,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                   layoutId={`price-${active.price}-${id}`}
                   className="text-gray-700"
                 >
-                  ${active.price.toFixed(2)}
+                  {active.price}
                 </motion.p>
                 <motion.div
                   layout
@@ -124,7 +124,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               <img
                 width={200}
                 height={200}
-                src={product.imageURL}
+                src={product.image_link}
                 alt={product.name}
                 className="w-full h-40 object-cover rounded-t-xl"
               />
@@ -151,7 +151,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 layoutId={`price-${product.price}-${id}`}
                 className="text-center"
               >
-                ${product.price.toFixed(2)}
+                {product.price}
               </motion.p>
             </div>
           </motion.div>

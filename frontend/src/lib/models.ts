@@ -4,7 +4,8 @@ export interface Product {
     name: string;
     price: number;
     description?: string;
-    imageURL?: string;
+    image_link?: string;
+    product_link?: string;
 }
 
 export interface VoiceResponse {
@@ -19,8 +20,8 @@ export interface SearchContext {
 
 export const mockProducts: Product[] = [
     // mockup products
-    { id: "1", brand: "The North Face", name: "Tent", price: 299.99, imageURL: "https://assets.aceternity.com/demos/lana-del-rey.jpeg" },
-    { id: "2", brand: "Columbia", name: "Jacket", price: 99.99, imageURL: "https://assets.aceternity.com/demos/lana-del-rey.jpeg" },
+    { id: "1", brand: "The North Face", name: "Tent", price: 299.99, image_link: "https://assets.aceternity.com/demos/lana-del-rey.jpeg" },
+    { id: "2", brand: "Columbia", name: "Jacket", price: 99.99, image_link: "https://assets.aceternity.com/demos/lana-del-rey.jpeg" },
 ];
 
 export const mockFilters = ["warm", "black/blue", "size L"];
