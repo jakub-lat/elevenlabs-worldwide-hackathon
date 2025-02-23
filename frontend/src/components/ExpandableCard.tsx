@@ -114,7 +114,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             layoutId={`card-${product.name}-${product.id}`}
             key={`card-${product.id}-${product.id}`}
             onClick={() => setActive(product)}
-            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter] last:col-span-full
+            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter] xl:last:col-span-full
             hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 xl:max-w-[100%] max-w-[450px] shadow-xs py-14"
           >
             {/* Image */}
