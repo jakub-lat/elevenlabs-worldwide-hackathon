@@ -76,7 +76,9 @@ export default function useRecording() {
 
         setSpeechState('loading');
         try {
-            const cancel = playTtsCancellable('Alright...');
+            const responses = ['Alright...', 'Alright!', 'Fine!', 'Sure.', 'Okay.', 'Got it.', 'Sure thing!', 'Hmmm...', 'Mhm.'];
+            const index = Math.floor(Math.random() * responses.length);
+            const cancel = playTtsCancellable(responses[index]);
 
             const transcribeResponse = await fetch(API_URL+"/transcribe/", {
                 method: "POST",
