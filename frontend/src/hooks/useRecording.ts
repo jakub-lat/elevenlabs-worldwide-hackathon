@@ -1,21 +1,26 @@
-import { speakingAtom } from "@/lib/state";
+import { mockProducts } from "@/lib/models";
+import { productsAtom, speechStateAtom } from "@/lib/state";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 export default function useRecording() {
-    const [_, setSpeaking] = useAtom(speakingAtom);
+    const [speechState, setSpeechState] = useAtom(speechStateAtom);
     const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
     const [audioUrl, setAudioUrl] = useState<string | null>(null);
     const [transcription, setTranscription] = useState<string | null>(null);
+    const [products, setProducts] = useAtom(productsAtom);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         let recorder: MediaRecorder | null = null;
         let chunks: Blob[] = [];
 
         const handleKeyDown = async (event: KeyboardEvent) => {
-            if (event.code === "Space" && !recorder) {
+            if (event.code === "Space" && !recorder && speechState !== 'loading') {
                 event.preventDefault();
-                setSpeaking(true);
+                setSpeechState('speaking');
 
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -40,8 +45,8 @@ export default function useRecording() {
 
         const handleKeyUp = (event: KeyboardEvent) => {
             if (event.code === "Space" && recorder) {
+                setSpeechState('loading');
                 event.preventDefault();
-                setSpeaking(false);
                 recorder.stop();
                 setMediaRecorder(null);
                 recorder = null;
@@ -51,7 +56,7 @@ export default function useRecording() {
 
         window.addEventListener("keydown", handleKeyDown);
         window.addEventListener("keyup", handleKeyUp);
-        
+
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
             window.removeEventListener("keyup", handleKeyUp);
@@ -62,6 +67,7 @@ export default function useRecording() {
         const formData = new FormData();
         formData.append("file", file);
 
+        setSpeechState('loading');
         try {
             const response = await fetch("http://localhost:8000/transcribe/", {
                 method: "POST",
@@ -70,11 +76,18 @@ export default function useRecording() {
 
             if (response.ok) {
                 console.log("Audio uploaded successfully");
+
+                setProducts(mockProducts);
+                if(!location.pathname.includes('browse')) {
+                    navigate('/browse');
+                }
+                
             } else {
                 console.error("Failed to transcribe audio");
             }
         } catch (error) {
             console.error("Error uploading audio:", error);
         }
+        setSpeechState('none');
     };
 }

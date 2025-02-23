@@ -193,7 +193,7 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   border-radius: 8px;
-  transition: height 0.2s ease;
+  /* transition: height 0.2s ease; */
 }
 
 .boxContainer.noAnimation .box {
@@ -238,4 +238,35 @@
 
 .boxContainer.noAnimation .box5 {
   height: 30%;
+}
+
+
+@keyframes loading {
+  0%, 50%, 100% {
+    height: var(--boxSize);
+  }
+  25% {
+    height: 30%;
+  }
+}
+
+.boxContainer.loading .box {
+  height: var(--boxSize);
+  animation: loading 1.2s infinite;
+}
+
+.boxContainer.loading .box2 {
+  animation-delay: 0.1s;
+}
+
+.boxContainer.loading .box3 {
+  animation-delay: 0.2s;
+}
+
+.boxContainer.loading .box4 {
+  animation-delay: 0.3s;
+}
+
+.boxContainer.loading .box5 {
+  animation-delay: 0.4s;
 }
