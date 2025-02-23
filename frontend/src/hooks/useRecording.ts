@@ -104,11 +104,11 @@ export default function useRecording() {
                     "Content-Type": "application/json",
                 }
             });
-            const { function_name, arguments: args, response, conversation_history, search_query, filters } = await nextMessageRes.json();
+            const { function_name, arguments: args, response, conversation_history, topic, filters } = await nextMessageRes.json();
             setConversationHistory(conversation_history);
 
-            if (search_query) {
-                setSearch({ query: search_query, filters });
+            if (topic) {
+                setSearch({ query: topic, filters: filters || [] });
             }
 
             cancel();
@@ -136,10 +136,12 @@ export default function useRecording() {
                 products = products.filter((x: any) => ids.includes(x.id));
                 setWishlist(prevWishlist => [...prevWishlist, ...products]);
                 setWishlistOpen(true);
+                setCurrentProduct(null);
             } else if(function_name === 'remove_favourites') {
                 const ids = args.product_ids;
                 setWishlist(wishlist.filter((x: any) => !ids.includes(x.id)));
                 setWishlistOpen(true);
+                setCurrentProduct(null);
             } else if(function_name === 'view_product_details') {
                 const id = args.product_id;
                 let products = await getProducts();
