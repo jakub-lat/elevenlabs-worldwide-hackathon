@@ -14,8 +14,8 @@ export default function Start() {
             </div>
             <div className="absolute left-0 right-0 bottom-0 pb-24 w-full">
                 <div className="mt-10 flex flex-col items-center">
-                    <span className="text-sm">Inspirations:</span>
-                    <Badges badges={["Winter jackets", "Tents", "Hiking boots", "Camping gear"]} />
+                    <span className="text-xs text-gray-800 mb-3">Get inspired:</span>
+                    <Badges badges={["Winter jackets", "Durable tents", "Hiking boots"]} />
                 </div>
             </div>
         </div>

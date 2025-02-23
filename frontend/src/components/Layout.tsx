@@ -5,7 +5,6 @@ import { useLocation } from "react-router";
 export default function Layout({ children }: { children: React.ReactNode }) {
     useRecording();
     const location = useLocation();
-    console.log(location.pathname);
 
     return children;
 

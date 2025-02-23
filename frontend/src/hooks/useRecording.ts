@@ -1,5 +1,6 @@
 import { API_URL } from "@/lib/const";
 import { mockProducts } from "@/lib/models";
+import { getProducts } from "@/lib/products";
 import { conversationHistoryAtom, currentProductAtom, productsAtom, searchAtom, speechStateAtom, wishlistAtom, wishlistOpenAtom } from "@/lib/state";
 import playTts, { playTtsCancellable } from "@/lib/tts";
 import { useAtom } from "jotai";
@@ -70,13 +71,17 @@ export default function useRecording() {
         };
     }, []);
 
+    useEffect(() => {
+        getProducts();
+    }, []);
+
     const uploadAudio = async (file: File) => {
         const formData = new FormData();
         formData.append("file", file);
 
         setSpeechState('loading');
         try {
-            const responses = ['Alright...', 'Alright!', 'Fine!', 'Sure.', 'Okay.', 'Got it.', 'Sure thing!', 'Hmmm...', 'Mhm.'];
+            const responses = ['Alright...', 'Fine!', 'Fine, let me think.', 'Sure.', 'Okay.', 'Got it.', 'Sure thing!', 'Hmmm...', 'Mhm.'];
             const index = Math.floor(Math.random() * responses.length);
             const cancel = playTtsCancellable(responses[index]);
 
@@ -115,8 +120,7 @@ export default function useRecording() {
             } else if(function_name === 'show_products' || function_name === 'show_more_products') {
                 if(!args.product_ids) return;
 
-                const productsRes = await fetch(API_URL+"/products");
-                let products = await productsRes.json();
+                let products = await getProducts();
                 products = products.filter((x: any) => args.product_ids.includes(x.id));
                 setProducts(products);
                 setWishlistOpen(false);
@@ -128,8 +132,7 @@ export default function useRecording() {
                 setWishlistOpen(true);
             } else if(function_name === 'add_favourites') {
                 const ids = args.product_ids;
-                const productsRes = await fetch(API_URL+"/products");
-                let products = await productsRes.json();
+                let products = await getProducts();
                 products = products.filter((x: any) => ids.includes(x.id));
                 setWishlist([...wishlist, ...products]);
                 setWishlistOpen(true);
@@ -139,10 +142,9 @@ export default function useRecording() {
                 setWishlistOpen(true);
             } else if(function_name === 'view_product_details') {
                 const id = args.product_id;
-                const productsRes = await fetch(API_URL+"/products");
-                let products = await productsRes.json();
+                let products = await getProducts();
                 const product = products.find((x: any) => x.id === id);
-                setCurrentProduct(product);
+                if(product) setCurrentProduct(product);
                 setWishlistOpen(false);
             } else if(function_name === 'exit_product_details') {
                 setCurrentProduct(null);
