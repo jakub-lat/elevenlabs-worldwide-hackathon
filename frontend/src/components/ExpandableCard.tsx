@@ -53,6 +53,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
               onClick={() => setActive(null)}
             >
+
               <CloseIcon />
             </motion.button>
             <motion.div
@@ -83,13 +84,13 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 </motion.h4>
                 <motion.h3
                   layoutId={`name-${active.name}-${active.id}`}
-                  className="font-bold text-black dark:text-neutral-200 text-xl"
+                  className="font-bold text-black dark:text-neutral-200 text-xl text-center mt-4"
                 >
                   {active.name}
                 </motion.h3>
                 <motion.p
                   layoutId={`price-${active.price}-${active.id}`}
-                  className="text-gray-700"
+                  className="text-gray-700 text-center mt-4"
                 >
                   {active.price}
                 </motion.p>
@@ -114,14 +115,14 @@ export function ExpandableCards({ products }: { products: Product[] }) {
         ) : null}
       </AnimatePresence>
       {/* Product List */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-2 gap-4 py-2 group">
+      <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-28 py-2 group">
         {products.map((product) => (
           <motion.div
             layoutId={`card-${product.name}-${product.id}`}
             key={`card-${product.id}-${product.id}`}
             onClick={() => setActive(product)}
-            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter]
-            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 max-w-[100%] shadow-xs py-14"
+            className="bg-white dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter]
+            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 max-w-[100%] py-4"
           >
             {/* Image */}
             <motion.div layoutId={`image-${product.name}-${product.id}`}>
@@ -145,18 +146,18 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 {/* Name */}
                 <motion.h3
                   layoutId={`name-${product.name}-${product.id}`}
-                  className="font-semibold text-neutral-800 dark:text-neutral-200"
+                  className="font-semibold text-neutral-800 dark:text-neutral-200 text-center mt-4"
                 >
                   {product.name}
                 </motion.h3>
+                {/* Price */}
+                <motion.p
+                  layoutId={`price-${product.price}-${product.id}`}
+                  className="text-center mt-4"
+                >
+                  {product.price}
+                </motion.p>
               </div>
-              {/* Price */}
-              <motion.p
-                layoutId={`price-${product.price}-${product.id}`}
-                className="text-center"
-              >
-                {product.price}
-              </motion.p>
             </div>
           </motion.div>
         ))}
