@@ -37,6 +37,12 @@ def read_root():
     return {"message": "API is running!"}
 
 
+@app.get("/products/")
+def get_products():
+    """Returns the list of products."""
+    return products
+
+
 @app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):
     """Handles audio transcription using OpenAI's Whisper model."""
