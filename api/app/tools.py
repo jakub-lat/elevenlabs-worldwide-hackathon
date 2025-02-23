@@ -97,6 +97,36 @@ view_product_details = {
     }
 }
 
+exit_product_details = {
+    "type": "function",
+    "function": {
+        "name": "exit_product_details",
+        "description": "Use this tool when the user wants to close the product details window.",
+        "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": False,
+        },
+        "strict": True,
+        "additionalProperties": False,
+    }
+}
+
+close_favorites = {
+    "type": "function",
+    "function": {
+        "name": "close_favorites",
+        "description": "Use this tool when the user wants to close the favorites window.",
+        "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": False,
+        },
+        "strict": True,
+        "additionalProperties": False,
+    }
+}
+
 go_to_cart = {
     "type": "function",
     "function": {
@@ -169,5 +199,7 @@ tools = [
     view_product_details,
     go_to_cart,
     show_products,
+    close_favorites,
+    exit_product_details,
     show_more_products
 ]
