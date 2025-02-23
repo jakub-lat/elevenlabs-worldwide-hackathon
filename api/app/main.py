@@ -8,6 +8,8 @@ from .tools import tools
 from .prompts import SYSTEM_PROMPT
 from .products import products
 import json
+from fastapi.responses import Response
+from .tts import tts  # Import the tts function
 
 # Load environment variables
 load_dotenv()
@@ -39,8 +41,7 @@ def read_root():
 
 @app.get("/products/")
 def get_products():
-    """Returns the list of products."""
-    return products
+    return products["products"]
 
 
 @app.post("/transcribe/")
@@ -64,6 +65,8 @@ async def transcribe_audio(file: UploadFile = File(...)):
         os.remove(file_location)
 
         print(f"Transcription: {transcription.text}")
+        
+        return transcription.text
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Transcription error: {str(e)}")
 
@@ -92,7 +95,7 @@ async def get_next_message(request: Request):
       products_formatted = "\n".join(products_formatted)
       
       conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products_formatted)})
-      conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
+      conversation_history.append({"role": "assistant", "content": "Hi, what products do you want to explore today?"})
     
     conversation_history.append({"role": "user", "content": body.get("user_message")})
 
@@ -132,3 +135,25 @@ async def get_next_message(request: Request):
       "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
       "conversation_history": conversation_history
     }
+
+@app.post("/text-to-speech/")
+async def text_to_speech(request: Request):
+    """Handles text-to-speech conversion using ElevenLabs API."""
+    try:
+        body = await request.json()
+        text = body.get("text")
+        
+        if not text:
+            raise HTTPException(status_code=400, detail="Text is required")
+
+        audio_bytes = tts(text)
+        
+        if audio_bytes is None:
+            raise HTTPException(status_code=500, detail="Failed to generate audio")
+
+        return Response(
+            content=audio_bytes,
+            media_type="audio/mpeg"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Text-to-speech error: {str(e)}")
