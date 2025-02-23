@@ -5,7 +5,7 @@ from openai import OpenAI
 import shutil
 import os
 from .utils.tools import tools
-from .utils.prompts import SYSTEM_PROMPT
+from .utils.prompts import SYSTEM_PROMPT_FOR_TOOL, SYSTEM_PROMPT_AFTER_TOOL, SYSTEM_PROMPT_SUMARIZE_TOPIC
 from .utils.products import products
 import json
 from fastapi.responses import Response
@@ -40,7 +40,7 @@ def read_root():
 
 
 @app.get("/products/")
-def get_products():
+def get_products(): 
     return products["products"]
 
 
@@ -78,6 +78,7 @@ async def get_next_message(request: Request):
     # Preparing conversation history and system prompt
     body = await request.json()
     conversation_history = body.get("conversation_history", [])
+    products_formatted = None
     if len(conversation_history) == 0:
       products_formatted = [
           f"Product (id: {product['id']}): {product['name']} - {product['price']}\n"
@@ -94,7 +95,7 @@ async def get_next_message(request: Request):
       
       products_formatted = "\n".join(products_formatted)
       
-      conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products_formatted)})
+      conversation_history.append({"role": "system", "content": SYSTEM_PROMPT_FOR_TOOL.format(products=products_formatted)})
       conversation_history.append({"role": "assistant", "content": "Hi, what products do you want to explore today?"})
     
     conversation_history.append({"role": "user", "content": body.get("user_message")})
@@ -117,8 +118,8 @@ async def get_next_message(request: Request):
     
     # Runing user response
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=conversation_history,
+        model="gpt-4o",
+        messages=[{"role": "system", "content": SYSTEM_PROMPT_AFTER_TOOL.format(products=products_formatted)}] + conversation_history[1:],
         tools=tools,
         tool_choice="none",
     )
@@ -128,8 +129,14 @@ async def get_next_message(request: Request):
       "role": "assistant",
       "content": response.choices[0].message.content,
     })
+    
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "system", "content": SYSTEM_PROMPT_SUMARIZE_TOPIC}] + conversation_history[1:],
+    )
 
     return {
+      "topic": response.choices[0].message.content,
       "function_name": function_name, 
       "arguments": json.loads(results), 
       "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
