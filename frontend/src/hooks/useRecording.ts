@@ -78,6 +78,8 @@ export default function useRecording() {
             } else if (function_name === 'exit_product_details' || function_name === 'close_favorites') {
                 setCurrentProduct(null);
                 setWishlistOpen(false);
+            } else if(function_name === 'go_to_cart') {
+                navigate('/summary');
             }
 
             playTts(response);

@@ -131,7 +131,7 @@ go_to_cart = {
     "type": "function",
     "function": {
         "name": "go_to_cart",
-        "description": "Use this tool when the user wants to go to their shopping cart. Also when the user wants to end the conversation.",
+        "description": "Use this tool when the user wants to summarize their shopping process, go to their shopping cart. Also when the user wants to end the conversation or anything like this.",
         "parameters": {
             "type": "object",
             "properties": {},
