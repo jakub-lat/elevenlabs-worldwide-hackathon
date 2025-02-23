@@ -38,6 +38,9 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 def read_root():
     return {"message": "API is running!"}
 
+@app.get("/products/")
+def get_products():
+    return products
 
 @app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):
@@ -89,7 +92,7 @@ async def get_next_message(request: Request):
       products_formatted = "\n".join(products_formatted)
       
       conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products_formatted)})
-      conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
+      conversation_history.append({"role": "assistant", "content": "Hi, what products do you want to explore today?"})
     
     conversation_history.append({"role": "user", "content": body.get("user_message")})
 
