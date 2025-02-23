@@ -1,3 +1,18 @@
+do_nothing = {
+    "type": "function",
+    "function": {
+        "name": "do_nothing",
+        "description": "Use this tool when you don't need to do anything, you only need to respond to the user's question or ask for additional information.",
+        "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": False,
+        },
+        "strict": True,
+    }
+}
+
+
 add_favourites = {
     "type": "function",
     "function": {
@@ -110,7 +125,7 @@ show_products = {
               "type": "array",
               "items": {
                 "type": "string",
-              "description": "The ID of the product to show (old product id when this position is unchanged, new product id when this position is changed)",
+              "description": "The ID of the product to show (old product id when this position is unchanged, new product id when this position is changed)"
             },
             "minItems": 4,
             "maxItems": 4
@@ -147,6 +162,7 @@ show_more_products = {
 }
 
 tools = [
+    do_nothing,
     add_favourites,
     open_favourites,
     remove_favourites,

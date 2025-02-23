@@ -64,24 +64,55 @@ async def transcribe_audio(file: UploadFile = File(...)):
 @app.post("/get_next_message/")
 async def get_next_message(request: Request):
     """Handles chatbot response using OpenAI's GPT-4o model."""
-    try:
-        body = await request.json()
-        conversation_history = body.get("conversation_history", [])
-        if not conversation_history:
-          conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products)})
-          conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
-        
-        conversation_history.append({"role": "user", "content": body.get("user_message")})
 
-        response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=conversation_history,
-            tools=tools,
-            tool_choice="required",
-        )
+    body = await request.json()
+    conversation_history = body.get("conversation_history", [])
+    if len(conversation_history) == 0:
+      products_formatted = [
+          f"Product (id: {product['id']}): {product['name']} - {product['price']}\n"
+          f"Description: {product['description']}\n"
+          f"Capacity: {product['capacity']}\n"
+          f"Weight: {product['weight']}\n"
+          f"Season rating: {product['season_rating']}\n"
+          f"Setup type: {product['setup_type']}\n"
+          f"Packed size: {product['packed_size']}\n"
+          f"Material: {product['material']}\n"
+          f"Special features: {product['special_features']}\n"
+          for product in products["products"]
+      ]
+      
+      products_formatted = "\n".join(products_formatted)
+      
+      conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products_formatted)})
+      conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
+    
+    conversation_history.append({"role": "user", "content": body.get("user_message")})
 
-        conversation_history.append(response)
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=conversation_history,
+        tools=tools,
+        tool_choice="required",
+    )
 
-        return {"message": "test", "conversation_history": conversation_history}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Chatbot error: {str(e)}")
+    assistant_message = response.choices[0].message
+    tool_call_id = assistant_message.tool_calls[0].id
+    function_name = assistant_message.tool_calls[0].function.name
+    results = assistant_message.tool_calls[0].function.arguments
+
+    conversation_history.append({"role": "function", "tool_call_id": assistant_message.tool_calls[0].id, "name": assistant_message.tool_calls[0].function.name, "content": results})
+    
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=conversation_history,
+        tools=tools,
+        tool_choice="none",
+    )
+    
+    conversation_history.append({
+      "role": "assistant",
+      "content": response.choices[0].message.content,
+      "tool_calls": response.choices[0].message.tool_calls
+    })
+
+    return {"message": "test", "conversation_history": conversation_history}
