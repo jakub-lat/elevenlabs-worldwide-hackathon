@@ -181,8 +181,8 @@ show_more_products = {
                 "type": "string",
               "description": "The ID of the product to show (old product id when this position is unchanged, new product id when this position is changed)"
             },
-            "minItems": 10,
-            "maxItems": 10
+            "minItems": 8,
+            "maxItems": 8
           }
         },  
         "strict": True,
