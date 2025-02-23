@@ -79,6 +79,8 @@ export default function useRecording() {
                 setCurrentProduct(null);
                 setWishlistOpen(false);
             } else if(function_name === 'go_to_cart') {
+                setCurrentProduct(null);
+                setWishlistOpen(false);
                 navigate('/summary');
             }
 
