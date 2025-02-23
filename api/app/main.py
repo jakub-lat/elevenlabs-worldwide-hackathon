@@ -1,11 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
 from dotenv import load_dotenv
 from openai import OpenAI
 import shutil
 import os
-from .tts import tts  # Import the tts function
 from .tools import tools
 from .prompts import SYSTEM_PROMPT
 from .products import products
@@ -38,9 +36,6 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 def read_root():
     return {"message": "API is running!"}
 
-@app.get("/products/")
-def get_products():
-    return products["products"]
 
 @app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):
@@ -63,8 +58,6 @@ async def transcribe_audio(file: UploadFile = File(...)):
         os.remove(file_location)
 
         print(f"Transcription: {transcription.text}")
-        
-        return transcription.text
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Transcription error: {str(e)}")
 
@@ -73,6 +66,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
 async def get_next_message(request: Request):
     """Handles chatbot response using OpenAI's GPT-4o model."""
 
+    # Preparing conversation history and system prompt
     body = await request.json()
     conversation_history = body.get("conversation_history", [])
     if len(conversation_history) == 0:
@@ -92,10 +86,11 @@ async def get_next_message(request: Request):
       products_formatted = "\n".join(products_formatted)
       
       conversation_history.append({"role": "system", "content": SYSTEM_PROMPT.format(products=products_formatted)})
-      conversation_history.append({"role": "assistant", "content": "Hi, what products do you want to explore today?"})
+      conversation_history.append({"role": "assistant", "content": "Hi, what do you want to explore?"})
     
     conversation_history.append({"role": "user", "content": body.get("user_message")})
 
+    # Running function call
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=conversation_history,
@@ -103,6 +98,7 @@ async def get_next_message(request: Request):
         tool_choice="required",
     )
 
+    # Storing results in history
     assistant_message = response.choices[0].message
     tool_call_id = assistant_message.tool_calls[0].id
     function_name = assistant_message.tool_calls[0].function.name
@@ -110,6 +106,7 @@ async def get_next_message(request: Request):
 
     conversation_history.append({"role": "function", "tool_call_id": assistant_message.tool_calls[0].id, "name": assistant_message.tool_calls[0].function.name, "content": results})
     
+    # Runing user response
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=conversation_history,
@@ -117,6 +114,7 @@ async def get_next_message(request: Request):
         tool_choice="none",
     )
     
+    # Storing assistant response in history
     conversation_history.append({
       "role": "assistant",
       "content": response.choices[0].message.content,
@@ -128,26 +126,3 @@ async def get_next_message(request: Request):
       "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
       "conversation_history": conversation_history
     }
-
-
-@app.post("/text-to-speech/")
-async def text_to_speech(request: Request):
-    """Handles text-to-speech conversion using ElevenLabs API."""
-    try:
-        body = await request.json()
-        text = body.get("text")
-        
-        if not text:
-            raise HTTPException(status_code=400, detail="Text is required")
-
-        audio_bytes = tts(text)
-        
-        if audio_bytes is None:
-            raise HTTPException(status_code=500, detail="Failed to generate audio")
-
-        return Response(
-            content=audio_bytes,
-            media_type="audio/mpeg"
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Text-to-speech error: {str(e)}")

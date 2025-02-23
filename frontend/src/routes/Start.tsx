@@ -1,5 +1,6 @@
 import Badges from "@/components/Badges";
 import SpeechIcon from "@/components/SpeechIcon";
+import { Link } from "react-router";
 
 export default function Start() {
     return (
@@ -8,13 +9,13 @@ export default function Start() {
                 <h1 className="text-center text-3xl font-bold mb-12 font-display">What do you want to buy today?</h1>
                 <SpeechIcon />
                 <span className="text-xs text-gray-800 mt-4">
-                    Hold Space to talk
+                    <Link to="/browse">Hold Space to talk</Link>
                 </span>
             </div>
             <div className="absolute left-0 right-0 bottom-0 pb-24 w-full">
                 <div className="mt-10 flex flex-col items-center">
-                    <span className="text-sm">Inspirations:</span>
-                    <Badges badges={["Winter jackets", "Tents", "Hiking boots", "Camping gear"]} />
+                    <span className="text-xs text-gray-800 mb-3">Get inspired:</span>
+                    <Badges badges={["Winter jackets", "Durable tents", "Hiking boots"]} />
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { atom } from 'jotai'
 import { mockProducts, Product, SearchContext, VoiceResponse } from './models'
 
-export const productsAtom = atom<Product[]>([]);
+export const productsAtom = atom<Product[]>(mockProducts);
 
 export const currentProductAtom = atom<Product | null>(null);
 
