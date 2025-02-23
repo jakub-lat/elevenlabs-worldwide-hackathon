@@ -7,6 +7,7 @@ import os
 from .tools import tools
 from .prompts import SYSTEM_PROMPT
 from .products import products
+from .schemas import QuerySummary
 import json
 
 # Load environment variables
@@ -66,6 +67,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
 async def get_next_message(request: Request):
     """Handles chatbot response using OpenAI's GPT-4o model."""
 
+    # Preparing conversation history and system prompt
     body = await request.json()
     conversation_history = body.get("conversation_history", [])
     if len(conversation_history) == 0:
@@ -89,6 +91,7 @@ async def get_next_message(request: Request):
     
     conversation_history.append({"role": "user", "content": body.get("user_message")})
 
+    # Running function call
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=conversation_history,
@@ -96,6 +99,7 @@ async def get_next_message(request: Request):
         tool_choice="required",
     )
 
+    # Storing results in history
     assistant_message = response.choices[0].message
     tool_call_id = assistant_message.tool_calls[0].id
     function_name = assistant_message.tool_calls[0].function.name
@@ -103,6 +107,7 @@ async def get_next_message(request: Request):
 
     conversation_history.append({"role": "function", "tool_call_id": assistant_message.tool_calls[0].id, "name": assistant_message.tool_calls[0].function.name, "content": results})
     
+    # Runing user response
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=conversation_history,
@@ -110,12 +115,23 @@ async def get_next_message(request: Request):
         tool_choice="none",
     )
     
+    # Storing assistant response in history
     conversation_history.append({
       "role": "assistant",
       "content": response.choices[0].message.content,
     })
 
+    # Extracting query summary
+    completion = client.beta.chat.completions.parse(
+        model="gpt-4o-mini",
+        messages=[{"role": "system", "content": "Extract the information from the conversation."}] + conversation_history[1:] ,
+        response_format=QuerySummary,
+    )
+
+    query_summary = completion.choices[0].message.parsed
+
     return {
+      "query_summary": query_summary,
       "function_name": function_name, 
       "arguments": json.loads(results), 
       "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
