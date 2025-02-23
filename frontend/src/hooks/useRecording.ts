@@ -1,5 +1,5 @@
 import { mockProducts } from "@/lib/models";
-import { conversationHistoryAtom, currentProductAtom, productsAtom, speechStateAtom, wishlistAtom, wishlistOpenAtom } from "@/lib/state";
+import { conversationHistoryAtom, currentProductAtom, productsAtom, searchAtom, speechStateAtom, wishlistAtom, wishlistOpenAtom } from "@/lib/state";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
@@ -16,6 +16,7 @@ export default function useRecording() {
     const [wishlistOpen, setWishlistOpen] = useAtom(wishlistOpenAtom);
     const [wishlist, setWishlist] = useAtom(wishlistAtom);
     const [currentProduct, setCurrentProduct] = useAtom(currentProductAtom);
+    const [search, setSearch] = useAtom(searchAtom);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -94,8 +95,12 @@ export default function useRecording() {
                     "Content-Type": "application/json",
                 }
             });
-            const { function_name, arguments: args, response, conversation_history } = await nextMessageRes.json();
-            setConversationHistory(conversationHistory);
+            const { function_name, arguments: args, response, conversation_history, search_query, filters } = await nextMessageRes.json();
+            setConversationHistory(conversation_history);
+
+            if (search_query) {
+                setSearch({ query: search_query, filters });
+            }
 
             console.log(function_name, args, response);
 
