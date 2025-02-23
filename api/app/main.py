@@ -4,12 +4,12 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import shutil
 import os
-from .tools import tools
-from .prompts import SYSTEM_PROMPT
-from .products import products
+from .utils.tools import tools
+from .utils.prompts import SYSTEM_PROMPT
+from .utils.products import products
 import json
 from fastapi.responses import Response
-from .tts import tts  # Import the tts function
+from .utils.tts import tts  # Import the tts function
 
 # Load environment variables
 load_dotenv()

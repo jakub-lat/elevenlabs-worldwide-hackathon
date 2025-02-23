@@ -11,3 +11,4 @@ wheels/
 .env
 
 /app/.env
+__init__
