@@ -12,7 +12,7 @@ export default function Start() {
                 <h1 className="text-center text-3xl font-bold mb-12 font-display">What do you want to buy today?</h1>
                 <SpeechIcon />
                 <span className="text-xs text-gray-800 mt-4">
-                    <Link to="/browse"> Hold Space to talk</Link>
+                    Hold Space to talk
                 </span>
             </div>
             <div className="absolute left-0 right-0 bottom-0 pb-24 w-full">
