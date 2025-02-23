@@ -108,14 +108,14 @@ export function ExpandableCards({ products }: { products: Product[] }) {
         ) : null}
       </AnimatePresence>
       {/* Product List */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-4 py-2 group">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-2 gap-4 py-2 group">
         {products.map((product) => (
           <motion.div
             layoutId={`card-${product.name}-${product.id}`}
             key={`card-${product.id}-${product.id}`}
             onClick={() => setActive(product)}
-            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter] xl:last:col-span-full
-            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 xl:max-w-[100%] max-w-[450px] shadow-xs py-14"
+            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter]
+            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 max-w-[100%] shadow-xs py-14"
           >
             {/* Image */}
             <motion.div layoutId={`image-${product.name}-${product.id}`}>
