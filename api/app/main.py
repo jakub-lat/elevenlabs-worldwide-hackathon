@@ -1,9 +1,11 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from dotenv import load_dotenv
 from openai import OpenAI
 import shutil
 import os
+from .tts import tts  # Import the tts function
 
 # Load environment variables
 load_dotenv()
@@ -78,3 +80,26 @@ async def get_next_message(request: Request):
         return {"message": assistant_message, "conversation_history": conversation_history}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Chatbot error: {str(e)}")
+
+
+@app.post("/text-to-speech/")
+async def text_to_speech(request: Request):
+    """Handles text-to-speech conversion using ElevenLabs API."""
+    try:
+        body = await request.json()
+        text = body.get("text")
+        
+        if not text:
+            raise HTTPException(status_code=400, detail="Text is required")
+
+        audio_bytes = tts(text)
+        
+        if audio_bytes is None:
+            raise HTTPException(status_code=500, detail="Failed to generate audio")
+
+        return Response(
+            content=audio_bytes,
+            media_type="audio/mpeg"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Text-to-speech error: {str(e)}")
