@@ -1,9 +1,5 @@
 import Badges from "@/components/Badges";
 import SpeechIcon from "@/components/SpeechIcon";
-import { productsAtom } from "@/lib/state";
-import { useAtom } from "jotai";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router";
 
 export default function Start() {
     return (

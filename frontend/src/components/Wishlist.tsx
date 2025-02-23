@@ -8,15 +8,17 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { wishlistAtom } from "@/lib/state"
+import { wishlistAtom, wishlistOpenAtom } from "@/lib/state"
 import { useAtom } from "jotai"
 import { useEffect } from "react";
 import { FaHeart } from "react-icons/fa"
 
 export default function Wishlist() {
     const [wishlist, setWishlist] = useAtom(wishlistAtom);
+    const [wishlistOpen, setWishlistOpen] = useAtom(wishlistOpenAtom);
+
     return (
-        <Sheet>
+        <Sheet open={wishlistOpen} onOpenChange={(x) => setWishlistOpen(x)}>
             <SheetTrigger asChild>
                 <div className="flex items-center gap-x-2 cursor-pointer hover:opacity-80 transition-colors">
                     <FaHeart size={25} />

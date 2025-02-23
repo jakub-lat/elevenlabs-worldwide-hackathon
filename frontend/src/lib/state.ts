@@ -18,3 +18,7 @@ export const searchAtom = atom<SearchContext>({
 });
 
 export const wishlistAtom = atom<Product[]>([]);
+
+export const wishlistOpenAtom = atom(false);
+
+export const conversationHistoryAtom = atom<any[]>([]);
