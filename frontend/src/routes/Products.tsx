@@ -6,6 +6,7 @@ import { productsAtom, searchAtom } from "@/lib/state";
 import { useAtom } from "jotai";
 import { FaHeart } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 export default function Products() {
     const [search, setSearch] = useAtom(searchAtom);
@@ -32,8 +33,13 @@ export default function Products() {
                     variants={fadeInUp}
                 >
                     <div>
-                        <h2 className="text-md text-gray-600">Looking for...</h2>
-                        <h1 className="text-4xl font-bold font-display">{search.query}</h1>
+                        {products?.length ? <>
+                            <h2 className="text-md text-gray-600">Looking for...</h2>
+                            <h1 className="text-4xl font-bold font-display">{search.query}</h1>
+                        </> : <div className="mt-24">
+                            <h3 className="text-3xl mb-8 font-display font-bold">It's empty over here!</h3>
+                            <Link to="/" className="bg-black text-gray-100 px-3 py-2 rounded-lg">Go back</Link>
+                        </div>}
                         <div className="mt-5 flex gap-x-3 gap-y-2">
                             {search.filters.map(filter => (
                                 <motion.div 
