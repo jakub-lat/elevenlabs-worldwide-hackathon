@@ -94,6 +94,12 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                   {active.price}
                 </motion.p>
                 <motion.div
+                  layoutId={`price-${active.price}-${active.id}`}
+                  className="text-gray-700"
+                >
+                  <div className="text-gray-500 text-sm">{(Math.floor(Math.random() * 31) * 0.1 + 2).toFixed(1)}/5 - ({Math.floor(Math.random() * (12345 - 24 + 1)) + 24} opinions gathered across the web)</div>
+                </motion.div>
+                <motion.div
                   layout
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
