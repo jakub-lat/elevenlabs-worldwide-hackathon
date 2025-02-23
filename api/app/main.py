@@ -117,7 +117,7 @@ async def get_next_message(request: Request):
     
     # Runing user response
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=conversation_history,
         tools=tools,
         tool_choice="none",
@@ -130,7 +130,7 @@ async def get_next_message(request: Request):
     })
     
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=[{"role": "system", "content": "Sumarize in maximum two words, what topic or product the user is interested in. Do not response with the whole sentence, just the topic or generalproduct name."}] + conversation_history[1:],
     )
 
