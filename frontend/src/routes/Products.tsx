@@ -2,12 +2,14 @@ import { ExpandableCards } from "@/components/ExpandableCard";
 import SpeechBar from "@/components/SpeechBar";
 import Wishlist from "@/components/Wishlist";
 import { mockProducts, Product } from "@/lib/models";
-import { searchAtom } from "@/lib/state";
+import { productsAtom, searchAtom } from "@/lib/state";
 import { useAtom } from "jotai";
 import { FaHeart } from "react-icons/fa";
 
 export default function Products() {
     const [search, setSearch] = useAtom(searchAtom);
+    const [products, setProducts] = useAtom(productsAtom);
+    
     // gird with products
     return <div>
         <SpeechBar />
@@ -26,7 +28,7 @@ export default function Products() {
                     <Wishlist />
                 </div>
             </div>
-            <ExpandableCards products={mockProducts}  />
+            <ExpandableCards products={products}  />
         </div>
     </div>
 }
