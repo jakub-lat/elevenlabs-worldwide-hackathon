@@ -65,7 +65,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               {/* Left: Image */}
               <motion.div
                 layoutId={`image-${active.name}-${id}`}
-                className="md:w-1/2"
+                className="md:w-1/2 my-12"
               >
                 <img
                   width={400}
@@ -126,7 +126,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 height={200}
                 src={product.image_link}
                 alt={product.name}
-                className="w-full h-40 object-cover rounded-t-xl"
+                className="w-full h-40 object-contain rounded-t-xl"
               />
             </motion.div>
             <div className="px-4 pt-2 pb-5 flex justify-between items-center">
