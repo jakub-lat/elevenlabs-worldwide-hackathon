@@ -12,7 +12,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7 x 20 inches",
         "material": "Ripstop polyester with aluminum poles",
-        "special_features": ["Included footprint", "Multiple doors", "Weather-resistant"]
+        "special_features": ["Included footprint", "Multiple doors", "Weather-resistant"],
+        "brand": "REI Co-op"
       },
       {
         "name": "Big Agnes Copper Spur HV UL2 Tent",
@@ -26,7 +27,8 @@
         "setup_type": "Freestanding",
         "packed_size": "6 x 19 inches",
         "material": "Ripstop nylon with DAC Featherlite poles",
-        "special_features": ["Ultralight", "Double doors", "High-volume design"]
+        "special_features": ["Ultralight", "Double doors", "High-volume design"],
+        "brand": "Big Agnes"
       },
       {
         "name": "NEMO Dagger OSMO 2P Tent",
@@ -40,7 +42,8 @@
         "setup_type": "Semi-freestanding",
         "packed_size": "6.5 x 19.5 inches",
         "material": "OSMO ripstop nylon with DAC poles",
-        "special_features": ["OSMO waterproofing", "Included footprint", "Enhanced ventilation"]
+        "special_features": ["OSMO waterproofing", "Included footprint", "Enhanced ventilation"],
+        "brand": "NEMO"
       },
       {
         "name": "Mountain Hardwear Mineral King 2 Tent with Footprint",
@@ -54,7 +57,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7.5 x 23 inches",
         "material": "Solution-dyed polyester with aluminum poles",
-        "special_features": ["Included footprint", "Color-coded setup", "Extra headroom"]
+        "special_features": ["Included footprint", "Color-coded setup", "Extra headroom"],
+        "brand": "Mountain Hardwear"
       },
       {
         "name": "Marmot Superalloy 3-Person Tent",
@@ -68,7 +72,8 @@
         "setup_type": "Semi-freestanding",
         "packed_size": "7 x 21 inches",
         "material": "Ripstop nylon with DAC Featherlite NFL poles",
-        "special_features": ["Ultralight design", "Wind-stable structure", "Maximum interior space"]
+        "special_features": ["Ultralight design", "Wind-stable structure", "Maximum interior space"],
+        "brand": "Marmot"
       },
       {
         "name": "Big Agnes Tiger Wall UL2 Solution-Dyed Tent",
@@ -82,7 +87,8 @@
         "setup_type": "Semi-freestanding",
         "packed_size": "6 x 19 inches",
         "material": "Solution-dyed ripstop nylon with DAC poles",
-        "special_features": ["Ultralight", "Solution-dyed fabric", "Three-person capacity"]
+        "special_features": ["Ultralight", "Solution-dyed fabric", "Three-person capacity"],
+        "brand": "Big Agnes"
       },
       {
         "name": "ALPS Mountaineering Chaos 2 Tent",
@@ -96,7 +102,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7 x 22 inches",
         "material": "Polyester taffeta with fiberglass poles",
-        "special_features": ["Budget-friendly", "Easy setup", "Beginner-friendly"]
+        "special_features": ["Budget-friendly", "Easy setup", "Beginner-friendly"],
+        "brand": "ALPS Mountaineering"
       },
       {
         "name": "NEMO Aurora 2 Backpacking Tent with Footprint",
@@ -110,7 +117,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7 x 21 inches",
         "material": "Ripstop nylon with aluminum poles",
-        "special_features": ["Included footprint", "Large doors", "Generous headroom"]
+        "special_features": ["Included footprint", "Large doors", "Generous headroom"],
+        "brand": "NEMO"
       },
       {
         "name": "Big Agnes C Bar 3 Tent",
@@ -124,7 +132,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7 x 22 inches",
         "material": "Polyester ripstop with DAC pressfit poles",
-        "special_features": ["Family-sized", "Multiple doors", "Good ventilation"]
+        "special_features": ["Family-sized", "Multiple doors", "Good ventilation"],
+        "brand": "Big Agnes"
       },
       {
         "name": "NEMO Hornet OSMO Ultralight 2P Tent",
@@ -138,7 +147,8 @@
         "setup_type": "Semi-freestanding",
         "packed_size": "5.5 x 18 inches",
         "material": "OSMO ripstop nylon with DAC Featherlite poles",
-        "special_features": ["Ultralight", "OSMO waterproofing", "Minimal weight"]
+        "special_features": ["Ultralight", "OSMO waterproofing", "Minimal weight"],
+        "brand": "NEMO"
       },
       {
         "name": "REI Co-op Trail Hut 2 Tent with Footprint",
@@ -152,7 +162,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7 x 20 inches",
         "material": "Ripstop polyester with aluminum poles",
-        "special_features": ["Included footprint", "Multiple doors", "Spacious interior"]
+        "special_features": ["Included footprint", "Multiple doors", "Spacious interior"],
+        "brand": "REI Co-op"
       },
       {
         "name": "Big Agnes Blacktail Hotel 2 Tent",
@@ -166,7 +177,8 @@
         "setup_type": "Freestanding",
         "packed_size": "7 x 21 inches",
         "material": "Polyester ripstop with DAC pressfit poles",
-        "special_features": ["Extended vestibule", "Hotel-style space", "Easy setup"]
+        "special_features": ["Extended vestibule", "Hotel-style space", "Easy setup"],
+        "brand": "Big Agnes"
       },
       {
         "name": "Big Agnes Sheep Mountain 1 Tent",
@@ -180,7 +192,8 @@
         "setup_type": "Freestanding",
         "packed_size": "6 x 18 inches",
         "material": "Polyester ripstop with aluminum poles",
-        "special_features": ["Compact design", "Single door", "Good ventilation"]
+        "special_features": ["Compact design", "Single door", "Good ventilation"],
+        "brand": "Big Agnes"
       },
     {
             "name": "Big Agnes Tiger Wall UL2 Solution-Dyed Tent",
@@ -194,7 +207,8 @@
             "setup_type": "Semi-freestanding",
             "packed_size": "5.5 x 18 inches",
             "material": "Solution-dyed ripstop nylon with DAC poles",
-            "special_features": ["Ultralight", "Solution-dyed fabric", "UV resistant"]
+            "special_features": ["Ultralight", "Solution-dyed fabric", "UV resistant"],
+            "brand": "Big Agnes"
         },
         {
             "name": "REI Co-op Half Dome 2 Tent with Footprint",
@@ -208,7 +222,8 @@
             "setup_type": "Freestanding",
             "packed_size": "7 x 21 inches",
             "material": "Ripstop nylon with aluminum poles",
-            "special_features": ["Included footprint", "Color-coded setup", "Multiple pockets"]
+            "special_features": ["Included footprint", "Color-coded setup", "Multiple pockets"],
+            "brand": "REI Co-op"
         },
         {
             "name": "Big Agnes Tiger Wall UL1 Solution-Dyed Tent",
@@ -222,7 +237,8 @@
             "setup_type": "Semi-freestanding",
             "packed_size": "5.5 x 17.5 inches",
             "material": "Solution-dyed ripstop nylon with DAC poles",
-            "special_features": ["Ultralight", "Solution-dyed fabric", "Single door"]
+            "special_features": ["Ultralight", "Solution-dyed fabric", "Single door"],
+            "brand": "Big Agnes"
         },
         {
             "name": "REI Co-op Trailmade 1 Tent with Footprint",
@@ -236,7 +252,8 @@
             "setup_type": "Freestanding",
             "packed_size": "6 x 18 inches",
             "material": "Ripstop polyester with aluminum poles",
-            "special_features": ["Included footprint", "Weather resistant", "Easy setup"]
+            "special_features": ["Included footprint", "Weather resistant", "Easy setup"],
+            "brand": "REI Co-op"
         },
         {
             "name": "NEMO Dragonfly OSMO 1P Tent",
@@ -250,7 +267,8 @@
             "setup_type": "Semi-freestanding",
             "packed_size": "6 x 19 inches",
             "material": "OSMO ripstop nylon with DAC Featherlite poles",
-            "special_features": ["OSMO waterproofing", "Enhanced ventilation", "Ultralight"]
+            "special_features": ["OSMO waterproofing", "Enhanced ventilation", "Ultralight"],
+            "brand": "NEMO"
         },
         {
             "name": "Mountain Hardwear Aspect 3 Tent",
@@ -264,7 +282,8 @@
             "setup_type": "Freestanding",
             "packed_size": "8 x 24 inches",
             "material": "Solution-dyed polyester with DAC poles",
-            "special_features": ["Multiple doors", "Large vestibules", "Family-sized"]
+            "special_features": ["Multiple doors", "Large vestibules", "Family-sized"],
+            "brand": "Mountain Hardwear"
         },
         {
             "name": "Big Agnes C Bar 2 Tent",
@@ -278,7 +297,8 @@
             "setup_type": "Freestanding",
             "packed_size": "6.5 x 20 inches",
             "material": "Polyester ripstop with DAC pressfit poles",
-            "special_features": ["Easy setup", "Good ventilation", "Durable design"]
+            "special_features": ["Easy setup", "Good ventilation", "Durable design"],
+            "brand": "Big Agnes"
         },
         {
             "name": "Big Agnes Tiger Wall UL3 Solution-Dyed Tent",
@@ -292,7 +312,8 @@
             "setup_type": "Semi-freestanding",
             "packed_size": "6 x 19 inches",
             "material": "Solution-dyed ripstop nylon with DAC poles",
-            "special_features": ["Ultralight", "Solution-dyed fabric", "Three-person capacity"]
+            "special_features": ["Ultralight", "Solution-dyed fabric", "Three-person capacity"],
+            "brand": "Big Agnes"
         }
     ]
 }
