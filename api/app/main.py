@@ -117,7 +117,7 @@ async def get_next_message(request: Request):
     
     # Runing user response
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=conversation_history,
         tools=tools,
         tool_choice="none",
