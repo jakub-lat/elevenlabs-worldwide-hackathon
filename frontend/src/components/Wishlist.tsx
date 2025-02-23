@@ -39,7 +39,7 @@ export default function Wishlist() {
                             <span className="text-md font-semibold">{product.name}</span>
                         </div>
                         <div className="flex flex-col items-end">
-                            <span className="text-sm font-semibold">${product.price}</span>
+                            <span className="text-sm font-semibold">{product.price}</span>
                         </div>
                     </div>)}
                 </div>
