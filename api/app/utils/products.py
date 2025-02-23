@@ -377,7 +377,7 @@ products = {
         },
         {
             "name": "REI Co-op Flash 55 Pack - Women's",
-            "image_link": "https://www.rei.com/media/aef6f0ac-ed54-4a95-bebe-5d9f04a9c3da.jpg",
+            "image_link": "https://www.rei.com/media/69c65206-39c4-4c38-9433-a64edcfe2c1a.jpg",
             "product_url": "https://www.rei.com/product/164818/rei-co-op-flash-55-pack-womens",
             "price": "$199.00",
             "description": "The REI Co-op Flash 55 Pack is a lightweight, customizable backpack designed specifically for women. Features removable components and ample storage options.",
@@ -392,7 +392,7 @@ products = {
         },
         {
             "name": "REI Co-op Traverse 70 Pack - Men's",
-            "image_link": "https://www.rei.com/media/d29e7c50-b1b7-4914-aadf-e9457a7862dc.jpg",
+            "image_link": "https://www.rei.com/media/69c65206-39c4-4c38-9433-a64edcfe2c1a.jpg",
             "product_url": "https://www.rei.com/product/213799/rei-co-op-traverse-70-pack-mens",
             "price": "$249.00",
             "description": "The REI Co-op Traverse 70 Pack is built for serious backpacking trips, featuring a robust suspension system and plenty of organizational options for extended journeys.",
