@@ -1,6 +1,5 @@
 import useRecording from "@/hooks/useRecording";
 import { AnimatePresence, motion } from "framer-motion";
-import { e } from "node_modules/react-router/dist/development/route-data-BmvbmBej.d.mts";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
