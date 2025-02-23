@@ -3,7 +3,7 @@ import { mockProducts, Product, SearchContext, VoiceResponse } from './models'
 
 export const productsAtom = atom<Product[]>([]);
 
-export const currentProductAtom = atom<Product | null>(null);
+export const currentProductAtom = atom<Product | null>(null as Product | null);
 
 export const bottomBarAtom = atom<VoiceResponse>({
     text: 'What do you want to do?',
