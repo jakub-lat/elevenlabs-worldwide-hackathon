@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 export default function Start() {
     return (
-        <div className="w-full h-full bg-[url(/images/7.jpg)] bg-cover bg-center">
+        <div className="w-full h-full bg-cover bg-center bg-white">
             <div className="flex flex-col justify-center items-center min-h-[100vh] w-full backdrop-blur-sm backdrop-saturate-50">
                 <h1 className="text-center text-5xl font-bold mb-16 font-display">
                     What do you want to buy today?
