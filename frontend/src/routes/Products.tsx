@@ -17,7 +17,7 @@ export default function Products() {
     };
     
     return (
-        <div>
+        <div className="pb-[10px]">
         <SpeechBar />
         <motion.div 
             initial="hidden" 
