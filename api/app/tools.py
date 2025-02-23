@@ -116,7 +116,7 @@ close_favorites = {
     "type": "function",
     "function": {
         "name": "close_favorites",
-        "description": "Use this tool when the user wants to close the favorites window.",
+        "description": "Use this tool when the user wants you to close the favorites window/wishlist.",
         "parameters": {
             "type": "object",
             "properties": {},
