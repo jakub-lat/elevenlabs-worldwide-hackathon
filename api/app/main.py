@@ -115,4 +115,9 @@ async def get_next_message(request: Request):
       "content": response.choices[0].message.content,
     })
 
-    return {"function_name": function_name, "arguments": json.loads(results), "conversation_history": conversation_history}
+    return {
+      "function_name": function_name, 
+      "arguments": json.loads(results), 
+      "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
+      "conversation_history": conversation_history
+    }
