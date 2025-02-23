@@ -7,6 +7,7 @@ import os
 from .tools import tools
 from .prompts import SYSTEM_PROMPT
 from .products import products
+import json
 
 # Load environment variables
 load_dotenv()
@@ -112,7 +113,6 @@ async def get_next_message(request: Request):
     conversation_history.append({
       "role": "assistant",
       "content": response.choices[0].message.content,
-      "tool_calls": response.choices[0].message.tool_calls
     })
 
-    return {"message": "test", "conversation_history": conversation_history}
+    return {"function_name": function_name, "arguments": json.loads(results), "conversation_history": conversation_history}
