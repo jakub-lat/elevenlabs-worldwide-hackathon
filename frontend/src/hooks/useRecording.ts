@@ -1,10 +1,10 @@
+import { API_URL } from "@/lib/const";
 import { mockProducts } from "@/lib/models";
 import { conversationHistoryAtom, currentProductAtom, productsAtom, searchAtom, speechStateAtom, wishlistAtom, wishlistOpenAtom } from "@/lib/state";
+import playTts, { playTtsCancellable } from "@/lib/tts";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-
-const API_URL = "http://localhost:8000";
 
 export default function useRecording() {
     const [speechState, setSpeechState] = useAtom(speechStateAtom);
@@ -76,6 +76,8 @@ export default function useRecording() {
 
         setSpeechState('loading');
         try {
+            const cancel = playTtsCancellable('Alright...');
+
             const transcribeResponse = await fetch(API_URL+"/transcribe/", {
                 method: "POST",
                 body: formData,
@@ -102,20 +104,12 @@ export default function useRecording() {
                 setSearch({ query: search_query, filters });
             }
 
+            cancel();
+
             console.log(function_name, args, response);
 
             if (function_name === 'do_nothing') {
-                const ttsRes = await fetch(API_URL+"/text-to-speech/", {
-                    method: "POST",
-                    body: JSON.stringify({ text: response }),
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                });
-                const audioBlob = await ttsRes.blob();
-                const audioUrl = URL.createObjectURL(audioBlob);
-                const audio = new Audio(audioUrl);
-                audio.play();
+                playTts(response);
             } else if(function_name === 'show_products' || function_name === 'show_more_products') {
                 if(!args.product_ids) return;
 
