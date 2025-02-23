@@ -38,6 +38,9 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 def read_root():
     return {"message": "API is running!"}
 
+@app.get("/products/")
+def get_products():
+    return products
 
 @app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):
