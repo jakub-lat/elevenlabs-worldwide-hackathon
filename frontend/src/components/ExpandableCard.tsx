@@ -137,7 +137,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             key={`card-${product.id}-${product.id}`}
             onClick={() => setActive(product)}
             className="bg-white dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter]
-            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 max-w-[100%] py-4"
+            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-4 max-w-[100%] py-4 h-80"
           >
             {/* Image */}
             <motion.div layoutId={`image-${product.name}-${product.id}`} className="mx-8">

@@ -13,7 +13,7 @@ export const bottomBarAtom = atom<VoiceResponse>({
 export const speechStateAtom = atom<'none' | 'speaking' | 'loading'>('none');
 
 export const searchAtom = atom<SearchContext>({
-    query: 'Winter jackets',
+    query: '',
     filters: []
 });
 

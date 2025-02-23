@@ -81,7 +81,7 @@ export default function useRecording() {
 
         setSpeechState('loading');
         try {
-            const responses = ['Alright...', 'Fine!', 'Fine, let me think.', 'Sure.', 'Okay.', 'Got it.', 'Sure thing!', 'Hmmm...', 'Mhm.'];
+            const responses = ['Alright...', 'Sure.', 'Okay.', 'Got it.', 'Sure thing!', 'Hmmm...', 'Mhm.'];
             const index = Math.floor(Math.random() * responses.length);
             const cancel = playTtsCancellable(responses[index]);
 
@@ -107,7 +107,7 @@ export default function useRecording() {
             const { function_name, arguments: args, response, conversation_history, topic, filters } = await nextMessageRes.json();
             setConversationHistory(conversation_history);
 
-            if (topic) {
+            if (topic && !search.query) {
                 setSearch({ query: topic, filters: filters || [] });
             }
 
