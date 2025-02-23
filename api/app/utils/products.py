@@ -13,7 +13,7 @@ products = {
         "packed_size": "7 x 20 inches",
         "material": "Ripstop polyester with aluminum poles",
         "special_features": ["Included footprint", "Multiple doors", "Weather-resistant"],
-        "id": "1"
+        "brand": "REI Co-op"
       },
       {
         "name": "Big Agnes Copper Spur HV UL2 Tent",
@@ -28,7 +28,7 @@ products = {
         "packed_size": "6 x 19 inches",
         "material": "Ripstop nylon with DAC Featherlite poles",
         "special_features": ["Ultralight", "Double doors", "High-volume design"],
-        "id": "2"
+        "brand": "Big Agnes"
       },
       {
         "name": "NEMO Dagger OSMO 2P Tent",
@@ -43,7 +43,7 @@ products = {
         "packed_size": "6.5 x 19.5 inches",
         "material": "OSMO ripstop nylon with DAC poles",
         "special_features": ["OSMO waterproofing", "Included footprint", "Enhanced ventilation"],
-        "id": "3"
+        "brand": "NEMO"
       },
       {
         "name": "Mountain Hardwear Mineral King 2 Tent with Footprint",
@@ -58,7 +58,7 @@ products = {
         "packed_size": "7.5 x 23 inches",
         "material": "Solution-dyed polyester with aluminum poles",
         "special_features": ["Included footprint", "Color-coded setup", "Extra headroom"],
-        "id": "4"
+        "brand": "Mountain Hardwear"
       },
       {
         "name": "Marmot Superalloy 3-Person Tent",
@@ -73,7 +73,7 @@ products = {
         "packed_size": "7 x 21 inches",
         "material": "Ripstop nylon with DAC Featherlite NFL poles",
         "special_features": ["Ultralight design", "Wind-stable structure", "Maximum interior space"],
-        "id": "5"
+        "brand": "Marmot"
       },
       {
         "name": "Big Agnes Tiger Wall UL2 Solution-Dyed Tent",
@@ -88,7 +88,7 @@ products = {
         "packed_size": "6 x 19 inches",
         "material": "Solution-dyed ripstop nylon with DAC poles",
         "special_features": ["Ultralight", "Solution-dyed fabric", "Three-person capacity"],
-        "id": "6"
+        "brand": "Big Agnes"
       },
       {
         "name": "ALPS Mountaineering Chaos 2 Tent",
@@ -103,7 +103,7 @@ products = {
         "packed_size": "7 x 22 inches",
         "material": "Polyester taffeta with fiberglass poles",
         "special_features": ["Budget-friendly", "Easy setup", "Beginner-friendly"],
-        "id": "7"
+        "brand": "ALPS Mountaineering"
       },
       {
         "name": "NEMO Aurora 2 Backpacking Tent with Footprint",
@@ -118,7 +118,7 @@ products = {
         "packed_size": "7 x 21 inches",
         "material": "Ripstop nylon with aluminum poles",
         "special_features": ["Included footprint", "Large doors", "Generous headroom"],
-        "id": "8"
+        "brand": "NEMO"
       },
       {
         "name": "Big Agnes C Bar 3 Tent",
@@ -133,7 +133,7 @@ products = {
         "packed_size": "7 x 22 inches",
         "material": "Polyester ripstop with DAC pressfit poles",
         "special_features": ["Family-sized", "Multiple doors", "Good ventilation"],
-        "id": "9"
+        "brand": "Big Agnes"
       },
       {
         "name": "NEMO Hornet OSMO Ultralight 2P Tent",
@@ -148,7 +148,7 @@ products = {
         "packed_size": "5.5 x 18 inches",
         "material": "OSMO ripstop nylon with DAC Featherlite poles",
         "special_features": ["Ultralight", "OSMO waterproofing", "Minimal weight"],
-        "id": "10"
+        "brand": "NEMO"
       },
       {
         "name": "REI Co-op Trail Hut 2 Tent with Footprint",
@@ -163,7 +163,7 @@ products = {
         "packed_size": "7 x 20 inches",
         "material": "Ripstop polyester with aluminum poles",
         "special_features": ["Included footprint", "Multiple doors", "Spacious interior"],
-        "id": "11"
+        "brand": "REI Co-op"
       },
       {
         "name": "Big Agnes Blacktail Hotel 2 Tent",
@@ -178,7 +178,7 @@ products = {
         "packed_size": "7 x 21 inches",
         "material": "Polyester ripstop with DAC pressfit poles",
         "special_features": ["Extended vestibule", "Hotel-style space", "Easy setup"],
-        "id": "12"
+        "brand": "Big Agnes"
       },
       {
         "name": "Big Agnes Sheep Mountain 1 Tent",
@@ -193,11 +193,11 @@ products = {
         "packed_size": "6 x 18 inches",
         "material": "Polyester ripstop with aluminum poles",
         "special_features": ["Compact design", "Single door", "Good ventilation"],
-        "id": "13"
+        "brand": "Big Agnes"
       },
     {
             "name": "Big Agnes Tiger Wall UL2 Solution-Dyed Tent",
-            "image_link": "https://www.rei.com/media/product/example.jpg",
+            "image_link": "https://www.rei.com/media/34a5a77e-c5e3-4fc9-bc8f-4903ea2425e8.jpg",
             "product_url": "https://www.rei.com/product/example",
             "price": "$399.95", 
             "description": "The Big Agnes Tiger Wall UL2 is a lightweight, two-person tent that offers a balance of weight and livability. Its solution-dyed fabric reduces environmental impact while providing excellent UV resistance.",
@@ -208,7 +208,7 @@ products = {
             "packed_size": "5.5 x 18 inches",
             "material": "Solution-dyed ripstop nylon with DAC poles",
             "special_features": ["Ultralight", "Solution-dyed fabric", "UV resistant"],
-            "id": "14"
+            "brand": "Big Agnes"
         },
         {
             "name": "REI Co-op Half Dome 2 Tent with Footprint",
@@ -223,7 +223,7 @@ products = {
             "packed_size": "7 x 21 inches",
             "material": "Ripstop nylon with aluminum poles",
             "special_features": ["Included footprint", "Color-coded setup", "Multiple pockets"],
-            "id": "15"
+            "brand": "REI Co-op"
         },
         {
             "name": "Big Agnes Tiger Wall UL1 Solution-Dyed Tent",
@@ -238,7 +238,7 @@ products = {
             "packed_size": "5.5 x 17.5 inches",
             "material": "Solution-dyed ripstop nylon with DAC poles",
             "special_features": ["Ultralight", "Solution-dyed fabric", "Single door"],
-            "id": "16"
+            "brand": "Big Agnes"
         },
         {
             "name": "REI Co-op Trailmade 1 Tent with Footprint",
@@ -253,12 +253,12 @@ products = {
             "packed_size": "6 x 18 inches",
             "material": "Ripstop polyester with aluminum poles",
             "special_features": ["Included footprint", "Weather resistant", "Easy setup"],
-            "id": "17"
+            "brand": "REI Co-op"
         },
         {
             "name": "NEMO Dragonfly OSMO 1P Tent",
             "image_link": "https://www.rei.com/media/00debb47-abff-44f5-9003-3e4a92561b60.jpg",
-            "product_url": "https://www.rei.com/product/215774/nemo-dragonfly-osmo-1p-tent",
+            "product_url": "https://www.rei.com/product/215774/nemo-dragonfly-osmo-1p-tent", 
             "price": "$399.95",
             "description": "The NEMO Dragonfly OSMO 1P Tent is a lightweight and spacious option for solo campers. It features a unique design for enhanced ventilation and stability.",
             "capacity": 1,
@@ -268,13 +268,13 @@ products = {
             "packed_size": "6 x 19 inches",
             "material": "OSMO ripstop nylon with DAC Featherlite poles",
             "special_features": ["OSMO waterproofing", "Enhanced ventilation", "Ultralight"],
-            "id": "18"
+            "brand": "NEMO"
         },
         {
             "name": "Mountain Hardwear Aspect 3 Tent",
             "image_link": "https://www.rei.com/media/f5fa66f8-31ad-4a81-a9ff-59f0e669e17c.jpg",
             "product_url": "https://www.rei.com/product/242550/mountain-hardwear-aspect-3-tent",
-            "price": "$499.00",
+            "price": "$499.00", 
             "description": "The Mountain Hardwear Aspect 3 Tent is designed for three campers, offering a spacious interior and excellent weather protection. Ideal for family camping trips.",
             "capacity": 3,
             "weight": "6 lbs 8 oz",
@@ -283,7 +283,7 @@ products = {
             "packed_size": "8 x 24 inches",
             "material": "Solution-dyed polyester with DAC poles",
             "special_features": ["Multiple doors", "Large vestibules", "Family-sized"],
-            "id": "19"
+            "brand": "Mountain Hardwear"
         },
         {
             "name": "Big Agnes C Bar 2 Tent",
@@ -292,13 +292,13 @@ products = {
             "price": "$349.95",
             "description": "The Big Agnes C Bar 2 Tent is a versatile and durable option for two campers. It features a simple setup and excellent ventilation for comfortable camping.",
             "capacity": 2,
-            "weight": "4 lbs 7 oz",
+            "weight": "4 lbs 7 oz", 
             "season_rating": "3-season",
             "setup_type": "Freestanding",
             "packed_size": "6.5 x 20 inches",
             "material": "Polyester ripstop with DAC pressfit poles",
             "special_features": ["Easy setup", "Good ventilation", "Durable design"],
-            "id": "20"
+            "brand": "Big Agnes"
         },
         {
             "name": "Big Agnes Tiger Wall UL3 Solution-Dyed Tent",
@@ -308,12 +308,102 @@ products = {
             "description": "The Big Agnes Tiger Wall UL3 Solution-Dyed Tent is a lightweight, three-person tent that offers ample space and comfort. Its solution-dyed fabric provides UV protection and reduces environmental impact.",
             "capacity": 3,
             "weight": "2 lbs 15 oz",
-            "season_rating": "3-season",
+            "season_rating": "3-season", 
             "setup_type": "Semi-freestanding",
             "packed_size": "6 x 19 inches",
             "material": "Solution-dyed ripstop nylon with DAC poles",
             "special_features": ["Ultralight", "Solution-dyed fabric", "Three-person capacity"],
-            "id": "21"
+            "brand": "Big Agnes"
+        },
+        {
+            "name": "Gregory Amber 65 Pack - Women's",
+            "image_link": "https://www.rei.com/media/74137048-eb79-46a8-8db8-3f55a79cd673.jpg",
+            "product_url": "https://www.rei.com/product/166713/gregory-amber-65-pack-womens",
+            "price": "$199.95",
+            "description": "The Gregory Amber 65 Pack is designed specifically for women, offering comfort and functionality for multi-day backpacking trips. Features an adjustable torso length and women-specific fit.",
+            "capacity": 1,
+            "weight": "4 lbs 9 oz",
+            "season_rating": "3-season",
+            "setup_type": "Internal frame",
+            "packed_size": "14-19 inches",
+            "material": "210D nylon with reinforced bottom",
+            "special_features": ["Women-specific fit", "Adjustable torso", "Rain cover included"],
+            "brand": "Gregory"
+        },
+        {
+            "name": "Osprey Rook 65 Pack - Men's",
+            "image_link": "https://www.rei.com/media/4280a1bf-83a8-4c6d-99b0-07b2ed4dedea.jpg",
+            "product_url": "https://www.rei.com/product/142640/osprey-rook-65-pack-mens",
+            "price": "$165.00",
+            "description": "The Osprey Rook 65 Pack is a versatile backpack perfect for weekend to extended backpacking trips. Features Osprey's AirSpeed ventilated back panel and integrated rain cover.",
+            "capacity": 1,
+            "weight": "3 lbs 8 oz",
+            "season_rating": "3-season",
+            "setup_type": "Internal frame",
+            "packed_size": "17-22 inches",
+            "material": "600D polyester",
+            "special_features": ["AirSpeed suspension", "Integrated rain cover", "Sleeping bag compartment"],
+            "brand": "Osprey"
+        },
+        {
+            "name": "REI Co-op Trailmade 60 Pack - Men's",
+            "image_link": "https://www.rei.com/media/b4979339-4605-4bd7-bf9e-f5a6a250ea40.jpg",
+            "product_url": "https://www.rei.com/product/213380/rei-co-op-trailmade-60-pack-mens",
+            "price": "$149.00",
+            "description": "The REI Co-op Trailmade 60 Pack offers excellent value for backpackers, with thoughtful organization and comfortable carrying features for multi-day adventures.",
+            "capacity": 1,
+            "weight": "3 lbs 13 oz",
+            "season_rating": "3-season",
+            "setup_type": "Internal frame",
+            "packed_size": "17-19 inches",
+            "material": "Recycled ripstop nylon",
+            "special_features": ["Recycled materials", "Multiple access points", "Hydration compatible"],
+            "brand": "REI Co-op"
+        },
+        {
+            "name": "Deuter Futura Vario 50+10 Pack",
+            "image_link": "https://www.rei.com/media/69c65206-39c4-4c38-9433-a64edcfe2c1a.jpg",
+            "product_url": "https://www.rei.com/product/204053/deuter-futura-vario-5010-pack",
+            "price": "$245.00",
+            "description": "The Deuter Futura Vario 50+10 Pack features an innovative adjustable back system and expandable capacity, perfect for varying trip lengths and changing loads.",
+            "capacity": 1,
+            "weight": "4 lbs 6 oz",
+            "season_rating": "3-season",
+            "setup_type": "Internal frame",
+            "packed_size": "16-21 inches",
+            "material": "600D polyester",
+            "special_features": ["Vario adjustment system", "Expandable capacity", "Air comfort back system"],
+            "brand": "Deuter"
+        },
+        {
+            "name": "REI Co-op Flash 55 Pack - Women's",
+            "image_link": "https://www.rei.com/media/aef6f0ac-ed54-4a95-bebe-5d9f04a9c3da.jpg",
+            "product_url": "https://www.rei.com/product/164818/rei-co-op-flash-55-pack-womens",
+            "price": "$199.00",
+            "description": "The REI Co-op Flash 55 Pack is a lightweight, customizable backpack designed specifically for women. Features removable components and ample storage options.",
+            "capacity": 1,
+            "weight": "2 lbs 10 oz",
+            "season_rating": "3-season",
+            "setup_type": "Internal frame",
+            "packed_size": "15-17 inches",
+            "material": "Ripstop nylon",
+            "special_features": ["Women-specific design", "Removable components", "Roll-top closure"],
+            "brand": "REI Co-op"
+        },
+        {
+            "name": "REI Co-op Traverse 70 Pack - Men's",
+            "image_link": "https://www.rei.com/media/d29e7c50-b1b7-4914-aadf-e9457a7862dc.jpg",
+            "product_url": "https://www.rei.com/product/213799/rei-co-op-traverse-70-pack-mens",
+            "price": "$249.00",
+            "description": "The REI Co-op Traverse 70 Pack is built for serious backpacking trips, featuring a robust suspension system and plenty of organizational options for extended journeys.",
+            "capacity": 1,
+            "weight": "4 lbs 14 oz",
+            "season_rating": "3-season",
+            "setup_type": "Internal frame",
+            "packed_size": "17-20 inches",
+            "material": "Recycled nylon",
+            "special_features": ["Uplift compression", "J-zip access", "Rain cover included"],
+            "brand": "REI Co-op"
         }
     ]
 }

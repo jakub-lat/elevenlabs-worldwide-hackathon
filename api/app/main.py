@@ -128,8 +128,14 @@ async def get_next_message(request: Request):
       "role": "assistant",
       "content": response.choices[0].message.content,
     })
+    
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "system", "content": "Sumarize in maximum two words, what topic or product the user is interested in. Do not response with the whole sentence, just the topic or generalproduct name."}] + conversation_history[1:],
+    )
 
     return {
+      "topic": response.choices[0].message.content,
       "function_name": function_name, 
       "arguments": json.loads(results), 
       "response": response.choices[0].message.content.replace("\n", "").replace("  ", " "), 
