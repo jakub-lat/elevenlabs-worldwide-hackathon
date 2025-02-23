@@ -407,3 +407,7 @@ products = {
         }
     ]
 }
+
+for i, p in enumerate(products['products']):
+    p['id'] = str(i)
+    p['name'] = p['name'].replace(p['brand'], '').strip()

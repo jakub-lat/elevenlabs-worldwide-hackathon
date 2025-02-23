@@ -24,7 +24,7 @@ export default function Products() {
             animate="visible" 
             variants={fadeInUp}
         >
-            <div className="py-24 px-24">
+            <div className="py-24 px-24 min-h-[100vh] flex flex-col">
                 <motion.div 
                     className="flex justify-between items-center w-full" 
                     initial="hidden" 

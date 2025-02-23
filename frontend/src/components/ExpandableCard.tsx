@@ -5,6 +5,7 @@ import { Product } from "@/lib/models";
 import { useAtom } from "jotai";
 import { currentProductAtom } from "@/lib/state";
 import { FaStar } from "react-icons/fa";
+import { LuExternalLink } from "react-icons/lu";
 
 
 export function ExpandableCards({ products }: { products: Product[] }) {
@@ -72,11 +73,11 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                   height={400}
                   src={active.image_link}
                   alt={active.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </motion.div>
               {/* Right: Details */}
-              <div className="md:w-1/2 p-6 flex flex-col justify-center gap-2">
+              <div className="md:w-1/2 p-6 flex flex-col justify-center gap-0 my-6">
                 <motion.h4
                   layoutId={`brand-${active.brand}-${active.id}`}
                   className="text-sm text-gray-500"
@@ -85,19 +86,19 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 </motion.h4>
                 <motion.h3
                   layoutId={`name-${active.name}-${active.id}`}
-                  className="font-bold text-black dark:text-neutral-200 text-xl mt-4"
+                  className="font-bold text-black dark:text-neutral-200 text-xl mt-0"
                 >
                   {active.name}
                 </motion.h3>
                 <motion.p
                   layoutId={`price-${active.price}-${active.id}`}
-                  className="text-gray-700 mt-1"
+                  className="text-gray-700 mt-2"
                 >
                   {active.price}
                 </motion.p>
                 <motion.div
                   layoutId={`reviews-${active.price}-${active.id}`}
-                  className="text-gray-700 mt-4 mb-2"
+                  className="text-gray-700 mt-8 mb-4"
                 >
                   <div className="flex flex-row gap-x-1 items-center">
                     <FaStar size={14} />
@@ -116,13 +117,20 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 >
                   {active.description}
                 </motion.div>
+                <motion.div layout className="mt-4 flex justify-end">
+                  <a href={active.product_url} target={'_blank'} className="mt-5 bg-black text-gray-100 rounded-lg px-5 py-2 cursor-pointer flex gap-x-3 items-center">
+                    VISIT
+                    <LuExternalLink />
+                  </a>
+                </motion.div>
+                
               </div>
             </motion.div>
           </div>
         ) : null}
       </AnimatePresence>
       {/* Product List */}
-      <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-8 py-2 group">
+      <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-8 pt-2 pb-24 group flex-1 place-items-center">
         {products.map((product) => (
           <motion.div
             layoutId={`card-${product.name}-${product.id}`}
@@ -153,14 +161,14 @@ export function ExpandableCards({ products }: { products: Product[] }) {
                 {/* Name */}
                 <motion.h3
                   layoutId={`name-${product.name}-${product.id}`}
-                  className="font-semibold text-neutral-800 dark:text-neutral-200 text-center mt-4"
+                  className="font-semibold text-neutral-800 dark:text-neutral-200 mt-0"
                 >
                   {product.name}
                 </motion.h3>
                 {/* Price */}
                 <motion.p
                   layoutId={`price-${product.price}-${product.id}`}
-                  className="text-center mt-4"
+                  className="mt-2"
                 >
                   {product.price}
                 </motion.p>

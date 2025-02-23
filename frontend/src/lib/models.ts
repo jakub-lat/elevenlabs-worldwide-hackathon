@@ -5,7 +5,7 @@ export interface Product {
     price: number;
     description?: string;
     image_link?: string;
-    product_link?: string;
+    product_url?: string;
 }
 
 export interface VoiceResponse {
