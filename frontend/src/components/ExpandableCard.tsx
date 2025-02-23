@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { Product } from "@/lib/models";
@@ -10,7 +9,6 @@ import { currentProductAtom } from "@/lib/state";
 export function ExpandableCards({ products }: { products: Product[] }) {
   const [active, setActive] = useAtom(currentProductAtom);
   const ref = useRef<HTMLDivElement>(null);
-  const id = useId();
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -47,7 +45,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
         {active && typeof active === "object" ? (
           <div className="fixed inset-0 -mt-[100px] grid place-items-center z-[100]">
             <motion.button
-              key={`button-${active.name}-${id}`}
+              key={`button-${active.name}-${active.id}`}
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -58,13 +56,13 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               <CloseIcon />
             </motion.button>
             <motion.div
-              layoutId={`card-${active.name}-${id}`}
+              layoutId={`card-${active.name}-${active.id}`}
               ref={ref}
               className="w-full max-w-4xl bg-white dark:bg-neutral-900 sm:rounded-lg overflow-hidden flex flex-col md:flex-row"
             >
               {/* Left: Image */}
               <motion.div
-                layoutId={`image-${active.name}-${id}`}
+                layoutId={`image-${active.name}-${active.id}`}
                 className="md:w-1/2 my-12"
               >
                 <img
@@ -78,19 +76,19 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               {/* Right: Details */}
               <div className="md:w-1/2 p-6 flex flex-col gap-2">
                 <motion.h4
-                  layoutId={`brand-${active.brand}-${id}`}
+                  layoutId={`brand-${active.brand}-${active.id}`}
                   className="text-sm text-gray-500"
                 >
                   {active.brand}
                 </motion.h4>
                 <motion.h3
-                  layoutId={`name-${active.name}-${id}`}
+                  layoutId={`name-${active.name}-${active.id}`}
                   className="font-bold text-black dark:text-neutral-200 text-xl"
                 >
                   {active.name}
                 </motion.h3>
                 <motion.p
-                  layoutId={`price-${active.price}-${id}`}
+                  layoutId={`price-${active.price}-${active.id}`}
                   className="text-gray-700"
                 >
                   {active.price}
@@ -113,14 +111,14 @@ export function ExpandableCards({ products }: { products: Product[] }) {
       <div className="max-w-6xl mx-auto flex flex-wrap gap-4 py-8">
         {products.map((product) => (
           <motion.div
-            layoutId={`card-${product.name}-${id}`}
-            key={`card-${product.id}-${id}`}
+            layoutId={`card-${product.name}-${product.id}`}
+            key={`card-${product.id}-${product.id}`}
             onClick={() => setActive(product)}
             className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-colors
             hover:bg-gray-100 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px] shadow-xs"
           >
             {/* Image */}
-            <motion.div layoutId={`image-${product.name}-${id}`}>
+            <motion.div layoutId={`image-${product.name}-${product.id}`}>
               <img
                 width={200}
                 height={200}
@@ -133,14 +131,14 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               <div className="flex flex-col">
                 {/* Brand */}
                 <motion.h4
-                  layoutId={`brand-${product.brand}-${id}`}
+                  layoutId={`brand-${product.brand}-${product.id}`}
                   className="text-sm text-gray-600"
                 >
                   {product.brand}
                 </motion.h4>
                 {/* Name */}
                 <motion.h3
-                  layoutId={`name-${product.name}-${id}`}
+                  layoutId={`name-${product.name}-${product.id}`}
                   className="font-semibold text-neutral-800 dark:text-neutral-200"
                 >
                   {product.name}
@@ -148,7 +146,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
               </div>
               {/* Price */}
               <motion.p
-                layoutId={`price-${product.price}-${id}`}
+                layoutId={`price-${product.price}-${product.id}`}
                 className="text-center"
               >
                 {product.price}
