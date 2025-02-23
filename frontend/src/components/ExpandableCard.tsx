@@ -60,7 +60,7 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             <motion.div
               layoutId={`card-${active.name}-${id}`}
               ref={ref}
-              className="w-full max-w-4xl bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden flex flex-col md:flex-row"
+              className="w-full max-w-4xl bg-white dark:bg-neutral-900 sm:rounded-lg overflow-hidden flex flex-col md:flex-row"
             >
               {/* Left: Image */}
               <motion.div
@@ -116,8 +116,8 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             layoutId={`card-${product.name}-${id}`}
             key={`card-${product.id}-${id}`}
             onClick={() => setActive(product)}
-            className="bg-white border border-gray-400 dark:bg-neutral-900 rounded-xl cursor-pointer transition-colors
-            hover:bg-gray-100 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px]"
+            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-colors
+            hover:bg-gray-100 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px] shadow-xs"
           >
             {/* Image */}
             <motion.div layoutId={`image-${product.name}-${id}`}>

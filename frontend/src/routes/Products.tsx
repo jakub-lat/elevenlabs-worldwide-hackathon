@@ -15,7 +15,7 @@ export default function Products() {
             <div className="flex justify-between items-center w-full">
                 <div>
                     <h2 className="text-md text-gray-600">Looking for...</h2>
-                    <h1 className="text-4xl font-bold">{search.query}</h1>
+                    <h1 className="text-4xl font-bold font-display">{search.query}</h1>
                     <div className="mt-5 flex gap-x-3 gap-y-2">
                         {search.filters.map(filter => <div key={filter} 
                             className="bg-gray-200 border border-gray-300 px-3 py-1 rounded-lg text-xs">

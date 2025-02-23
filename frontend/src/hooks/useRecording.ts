@@ -14,6 +14,7 @@ export default function useRecording() {
 
         const handleKeyDown = async (event: KeyboardEvent) => {
             if (event.code === "Space" && !recorder) {
+                event.preventDefault();
                 setSpeaking(true);
 
                 try {
@@ -39,6 +40,7 @@ export default function useRecording() {
 
         const handleKeyUp = (event: KeyboardEvent) => {
             if (event.code === "Space" && recorder) {
+                event.preventDefault();
                 setSpeaking(false);
                 recorder.stop();
                 setMediaRecorder(null);

@@ -15,9 +15,9 @@ export default function SpeechBar() {
                 <Badges badges={state.examples} />
             </div>
             <SpeechIcon animate={speaking} />
-            {/* <span className="text-xs text-gray-600 mt-4">
-                Control the website with your voice.
-            </span> */}
+            <span className="text-xs text-gray-500 mt-2">
+                Hold Space to talk
+            </span>
         </div>
     </div>
 }

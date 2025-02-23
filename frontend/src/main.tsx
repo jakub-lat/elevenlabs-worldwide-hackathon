@@ -8,13 +8,13 @@ import Layout from './components/Layout.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Layout>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/browse" element={<Products />} />
         </Routes>
-      </BrowserRouter>
-    </Layout>
+      </Layout>
+    </BrowserRouter>
   </StrictMode>,
 )

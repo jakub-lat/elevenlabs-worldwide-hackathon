@@ -18,10 +18,10 @@ export default function Wishlist() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 cursor-pointer hover:opacity-80 transition-colors">
                     <FaHeart size={25} />
                     <span className="text-sm text-gray-800">
-                        10
+                        {wishlist.length}
                     </span>
                 </div>
             </SheetTrigger>
