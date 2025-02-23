@@ -17,7 +17,7 @@ add_favourites = {
     "type": "function",
     "function": {
         "name": "add_favourites",
-        "description": "Use this tool when the user wants to add a product to their favorites.",
+        "description": "Use this tool when the user wants to add a product/option/item to their favorites.",
         "parameters": {
             "type": "object",  # Root type must be an object
             "properties": {
@@ -41,7 +41,7 @@ open_favourites = {
     "type": "function",
     "function": {
         "name": "open_favorites",
-        "description": "Use this tool when the user wants to open their favorites.",
+        "description": "Use this tool when the user wants to open their favorites/options.",
         "parameters": {
             "type": "object",
             "properties": {},
