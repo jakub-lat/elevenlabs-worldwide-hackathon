@@ -114,8 +114,8 @@ export function ExpandableCards({ products }: { products: Product[] }) {
             layoutId={`card-${product.name}-${product.id}`}
             key={`card-${product.id}-${product.id}`}
             onClick={() => setActive(product)}
-            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-colors
-            hover:bg-gray-100 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px] shadow-xs"
+            className="bg-white border border-gray-300 dark:bg-neutral-900 rounded-md cursor-pointer transition-[filter]
+            hover:brightness-90 dark:hover:bg-neutral-800 flex flex-col gap-3 w-[300px] shadow-xs"
           >
             {/* Image */}
             <motion.div layoutId={`image-${product.name}-${product.id}`}>

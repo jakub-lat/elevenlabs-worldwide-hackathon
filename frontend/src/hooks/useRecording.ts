@@ -117,6 +117,7 @@ export default function useRecording() {
                 let products = await productsRes.json();
                 products = products.filter((x: any) => args.product_ids.includes(x.id));
                 setProducts(products);
+                setWishlistOpen(false);
 
                 if(!location.pathname.includes('browse')) {
                     navigate('/browse');
@@ -129,17 +130,21 @@ export default function useRecording() {
                 let products = await productsRes.json();
                 products = products.filter((x: any) => ids.includes(x.id));
                 setWishlist([...wishlist, ...products]);
+                setWishlistOpen(true);
             } else if(function_name === 'remove_favourites') {
                 const ids = args.product_ids;
                 setWishlist(wishlist.filter((x: any) => !ids.includes(x.id)));
+                setWishlistOpen(true);
             } else if(function_name === 'view_product_details') {
                 const id = args.product_id;
                 const productsRes = await fetch(API_URL+"/products");
                 let products = await productsRes.json();
                 const product = products.find((x: any) => x.id === id);
                 setCurrentProduct(product);
+                setWishlistOpen(false);
             } else if(function_name === 'exit_product_details') {
                 setCurrentProduct(null);
+                setWishlistOpen(false);
             } else if(function_name === 'close_favorites') {
                 setWishlistOpen(false);
             }
